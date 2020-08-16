@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Swop2Activity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+
+
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <TextView
+                    android:paddingLeft="30dp"
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SWOP"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@color/c"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+
+
+                    app:layout_constraintHorizontal_bias="0.074"
+
+                    app:layout_constraintVertical_bias="0.06" />
+
+
+
+
+                <ImageButton
+                    android:id="@+id/imageButton"
+                    android:layout_marginLeft="30dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@android:color/transparent"
+                    android:scaleType="fitStart"
+                    android:tint="?android:attr/colorActivatedHighlight"
+
+                    app:layout_constraintVertical_bias="0.061"
+                    app:srcCompat="@drawable/m" />
+
+                <LinearLayout
+                    android:gravity="right"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+
+                    <ImageButton
+                        android:id="@+id/imageButton3"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@android:color/transparent"
+                        android:scaleType="fitStart"
+                        android:tint="?android:attr/colorActivatedHighlight"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.849"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.058"
+                        app:srcCompat="@drawable/ic_baseline_search_24" />
+
+                    <ImageButton
+                        android:id="@+id/imageButton4"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@android:color/transparent"
+                        android:scaleType="fitStart"
+                        android:tint="?android:attr/colorActivatedHighlight"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.956"
+                        app:layout_constraintStart_toStartOf="@+id/textView"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.052"
+                        app:srcCompat="@drawable/ic_baseline_shopping_cart_24" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/d"
+                android:orientation="horizontal">
+
+
+                <ImageView
+
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+
+                    android:background="@color/d"
+                    android:tint="#000000"
+                    app:srcCompat="@drawable/ic_baseline_laptop_24" />
+
+                <TextView
+
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+
+                    android:text="Asus laptop 32GB" />
+
+                <ImageButton
+
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/d"
+                    android:tint="@color/b"
+                    app:srcCompat="@drawable/ic_baseline_favorite_24" />
+
+                <ImageButton
+
+
+                    android:layout_width="2dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/d"
+                    android:tint="@color/b"
+                    app:srcCompat="@drawable/ic_baseline_shopping_cart_24" />
+            </LinearLayout>
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/d"
+                android:orientation="horizontal">
+
+
+                <ImageView
+
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+
+                    android:background="@color/d"
+                    android:tint="#000000"
+                    app:srcCompat="@drawable/ic_baseline_laptop_24" />
+
+                <TextView
+
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+
+                    android:text="Apple laptop" />
+
+                <ImageButton
+
+                    android:layout_width="2dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/d"
+                    android:tint="@color/b"
+                    app:srcCompat="@drawable/ic_baseline_favorite_24" />
+
+                <ImageButton
+
+
+                    android:layout_width="2dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/d"
+                    android:tint="@color/b"
+                    app:srcCompat="@drawable/ic_baseline_shopping_cart_24" />
+            </LinearLayout>
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/d"
+                android:orientation="horizontal">
+
+
+                <ImageView
+
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+
+                    android:background="@color/d"
+                    android:tint="#000000"
+                    app:srcCompat="@drawable/ic_baseline_tablet_android_24" />
+
+                <TextView
+
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+
+                    android:text="Samsung Tab" />
+
+                <ImageButton
+
+                    android:layout_width="2dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/d"
+                    android:tint="@color/b"
+                    app:srcCompat="@drawable/ic_baseline_favorite_24" />
+
+                <ImageButton
+
+
+                    android:layout_width="2dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/d"
+                    android:tint="@color/b"
+                    app:srcCompat="@drawable/ic_baseline_shopping_cart_24" />
+            </LinearLayout>
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/d"
+                android:orientation="horizontal">
+
+
+                <ImageView
+
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+
+                    android:background="@color/d"
+                    android:tint="#000000"
+                    app:srcCompat="@drawable/ic_baseline_headset_24" />
+
+                <TextView
+
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+
+                    android:text="Sony Headset" />
+
+                <ImageButton
+
+                    android:layout_width="2dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/d"
+                    android:tint="@color/b"
+                    app:srcCompat="@drawable/ic_baseline_favorite_24" />
+
+                <ImageButton
+
+
+                    android:layout_width="2dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/d"
+                    android:tint="@color/b"
+                    app:srcCompat="@drawable/ic_baseline_shopping_cart_24" />
+            </LinearLayout>
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/d"
+                android:orientation="horizontal">
+
+
+                <ImageView
+
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+
+                    android:background="@color/d"
+                    android:tint="#000000"
+                    app:srcCompat="@drawable/ic_baseline_laptop_24" />
+
+                <TextView
+
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+
+                    android:text="Asus laptop 32GB" />
+
+                <ImageButton
+
+                    android:layout_width="2dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/d"
+                    android:tint="@color/b"
+                    app:srcCompat="@drawable/ic_baseline_favorite_24" />
+
+                <ImageButton
+
+
+                    android:layout_width="2dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/d"
+                    android:tint="@color/b"
+                    app:srcCompat="@drawable/ic_baseline_shopping_cart_24" />
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
