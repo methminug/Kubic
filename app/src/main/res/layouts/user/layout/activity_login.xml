@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="50dp"
+        android:id="@+id/logo">
+
+
+        <ImageView
+            android:id="@+id/logoicon"
+            android:layout_width="200dp"
+            android:layout_height="150dp"
+            android:src="@drawable/barter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/logoicon"
+            android:layout_centerVertical="true"
+            android:textSize="40dp"
+            android:textStyle="bold"
+            android:text="SWOP"/>
+
+
+
+    </RelativeLayout>
+
+
+
+    <EditText
+
+        android:layout_width="330dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:background="@color/colorAccent"
+        android:hint="Username Or Email"
+        android:drawableLeft="@drawable/ic_person_outline_black_24"
+        android:padding="5dp"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logo"
+        android:id="@+id/uname"
+        />
+
+    <EditText
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="330dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/colorAccent"
+        android:hint="Password"
+        android:drawableLeft="@drawable/ic_lock_outline_black_24"
+        android:inputType="textPassword"
+        android:padding="5dp"
+        android:textSize="22sp"
+        app:layout_constraintTop_toBottomOf="@id/uname"
+        android:id="@+id/pwd"/>
+
+
+    <TextView
+        android:id="@+id/txt"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="181dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="-300dp"
+        android:padding="5dp"
+        android:text="Or Connect With"
+        android:textSize="20sp"
+        tools:visibility="visible"
+        app:layout_constraintTop_toBottomOf="@id/pwd"/>
+
+    <RelativeLayout
+        android:id="@+id/icons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/txt"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" >
+
+        <ImageView
+            android:id="@+id/fbIcon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="30dp"
+            android:layout_toLeftOf="@id/twtrIcon"
+            android:src="@drawable/fb"
+            android:layout_marginHorizontal="30dp"/>
+
+
+
+        <ImageView
+            android:id="@+id/twtrIcon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/tw"
+            android:layout_centerHorizontal="true"/>
+
+        <ImageView
+            android:id="@+id/ggIcon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/gg"
+            android:layout_toRightOf="@id/twtrIcon"
+            android:layout_marginHorizontal="30dp"
+            />
+
+
+    </RelativeLayout>
+
+    <Button
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="330dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="LOGIN"
+        android:textSize="22sp"
+        app:layout_constraintTop_toBottomOf="@id/icons"
+        android:id="@+id/butIcon"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign Up Here"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@id/butIcon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="50dp"
+        android:clickable="true"/>
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

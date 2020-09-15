@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">SWOP</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+
+
+    <string name="mainWishlist">All wishes appear here</string>
+    <string name="myWishlist">User wishes appear here</string>
+    <string name="title_activity_display_info">displayInfo</string>
+
+    <!-- Strings used for fragments for navigation -->
+
+    <string name="postWishItem">Post to Wish List</string>
+
+    <string name="titleItemName">Item Name</string>
+    <string name="titleDesc">Item Description</string>
+    <string name="titleCategory">Category</string>
+
+    <!--    Tooltips-->
+    <string name="toolHeart">Your wishes</string>
+    <string name="toolPlus">Add a wish</string>
+    <string name="toolOffer">Make an offer</string>
+
+    <string-array name="catgeorySpinner">
+        <item>Furniture</item>
+        <item>Books</item>
+        <item>Electronics</item>
+        <item>Accessories</item>
+        <item>Cookware</item>
+        <item>Miscellaneous</item>
+    </string-array>
+</resources>

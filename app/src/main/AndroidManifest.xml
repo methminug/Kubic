@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.cruddemo">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".wish.SwipeCards"
+            android:label="Item Browsing">
+        </activity>
+        <activity android:name=".wish.AddNewWish">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".wish.MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
+        <activity android:name=".item.MainActivity" android:label="My Account"/>
+        <activity android:name=".item.Swop1Activity" android:label="Item Profile"/>
+        <activity android:name=".item.Swop2Activity" android:label="Cart"/>
+
+        <activity android:name=".user.login" />
+    </application>
+
+</manifest>

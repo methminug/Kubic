@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="50dp"
+        android:id="@+id/logo">
+
+
+        <ImageView
+            android:id="@+id/logoicon"
+            android:layout_width="250dp"
+            android:layout_height="150dp"
+            android:src="@drawable/barter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/logoicon"
+            android:layout_centerVertical="true"
+            android:textSize="40dp"
+            android:textStyle="bold"
+            android:text="SWOP"/>
+
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="508dp"
+        android:layout_height="864dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/topic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginVertical="220dp"
+            android:text="Sign Up Here!"
+            android:textSize="30sp" />
+
+        <EditText
+            android:layout_width="330dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="-180dp"
+            android:background="@color/colorAccent"
+            android:hint="Enter User Name"
+            android:inputType="textPersonName"
+            android:padding="5dp"
+            android:textSize="22sp" />
+
+
+        <EditText
+            android:layout_width="330dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@color/colorAccent"
+            android:hint="Address"
+            android:inputType="textPostalAddress"
+            android:padding="5dp"
+            android:textSize="22sp" />
+
+        <EditText
+            android:layout_width="330dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@color/colorAccent"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:padding="5dp"
+            android:textSize="22sp" />
+
+        <EditText
+            android:layout_width="330dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@color/colorAccent"
+            android:hint="Phone"
+            android:inputType="text"
+            android:padding="5dp"
+            android:textSize="22sp" />
+
+        <EditText
+            android:layout_width="330dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@color/colorAccent"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:padding="5dp"
+            android:textSize="22sp" />
+
+        <Button
+
+            android:layout_width="230dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:background="@color/colorPrimaryDark"
+            android:text="SIGN UP"
+            android:textSize="22sp" />
+
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
