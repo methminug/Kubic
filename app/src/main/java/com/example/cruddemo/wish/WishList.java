@@ -9,7 +9,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.example.cruddemo.R;
 
-public class MainActivity extends AppCompatActivity {
+public class WishList extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

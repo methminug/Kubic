@@ -4,8 +4,17 @@ public class Wish {
     private String wishName;
     private String wishDesc;
     private String wishCategory;
+    private String wishOwner;
 
     public Wish() {
+    }
+
+    public String getWishOwner() {
+        return wishOwner;
+    }
+
+    public void setWishOwner(String wishOwner) {
+        this.wishOwner = wishOwner;
     }
 
     public String getWishName() {
@@ -32,3 +41,4 @@ public class Wish {
         this.wishCategory = wishCategory;
     }
 }
+

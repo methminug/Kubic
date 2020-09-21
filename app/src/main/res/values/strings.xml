@@ -24,12 +24,12 @@
     <string name="toolPlus">Add a wish</string>
     <string name="toolOffer">Make an offer</string>
 
-    <string-array name="catgeorySpinner">
-        <item>Furniture</item>
-        <item>Books</item>
-        <item>Electronics</item>
-        <item>Accessories</item>
-        <item>Cookware</item>
-        <item>Miscellaneous</item>
-    </string-array>
+<!--    <string-array name="catgeorySpinner">-->
+<!--        <item>Furniture</item>-->
+<!--        <item>Books</item>-->
+<!--        <item>Electronics</item>-->
+<!--        <item>Accessories</item>-->
+<!--        <item>Cookware</item>-->
+<!--        <item>Miscellaneous</item>-->
+<!--    </string-array>-->
 </resources>

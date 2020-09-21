@@ -12,7 +12,7 @@ import com.example.cruddemo.R;
 public class DataHolder extends RecyclerView.ViewHolder {
 
     ImageView pImageView;
-    TextView pDesc, pTitle, pCateg;
+    TextView pDesc, pTitle, pCateg, pWishedBy;
 
     public DataHolder(@NonNull View itemView) {
         super(itemView);
@@ -21,6 +21,7 @@ public class DataHolder extends RecyclerView.ViewHolder {
         this.pTitle = itemView.findViewById(R.id.wishItemName);
         this.pDesc = itemView.findViewById(R.id.wishItemDesc);
         this.pCateg = itemView.findViewById(R.id.wishCategory);
+        this.pWishedBy = itemView.findViewById(R.id.username);
     }
 
     public ImageView getpImageView() {
@@ -37,5 +38,9 @@ public class DataHolder extends RecyclerView.ViewHolder {
 
     public TextView getpCateg() {
         return pCateg;
+    }
+
+    public TextView getpWishedBy() {
+        return pWishedBy;
     }
 }

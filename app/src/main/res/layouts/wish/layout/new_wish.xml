@@ -77,34 +77,20 @@
         android:paddingLeft="50dp"
         android:text="@string/titleCategory"
         android:textAppearance="@style/TitleTextAppearance"
-        app:layout_constraintBottom_toTopOf="@id/editTextItemCategory"
+        app:layout_constraintBottom_toTopOf="@id/categorySpinner"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/editTextItemDesc" />
 
-    <EditText
-        android:id="@+id/editTextItemCategory"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textMultiLine"
-        android:hint="Describe your item"
-        android:layout_marginLeft="50dp"
-        android:background="#00000000"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title_third"
-        />
-
-    <!--    <Spinner-->
-    <!--        android:id="@+id/categorySpinner"-->
-    <!--        android:layout_width="408dp"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:entries="@array/catgeorySpinner"-->
-    <!--        android:paddingLeft="50dp"-->
-    <!--        android:paddingRight="50dp"-->
-    <!--        app:layout_constraintBottom_toTopOf="@id/button_post"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toBottomOf="@id/title_third" />-->
+        <Spinner
+            android:id="@+id/categorySpinner"
+            android:layout_width="408dp"
+            android:layout_height="wrap_content"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            app:layout_constraintBottom_toTopOf="@id/button_post"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title_third" />
 
     <Button
         android:id="@+id/button_post"
@@ -119,6 +105,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editTextItemCategory" />
+        app:layout_constraintTop_toBottomOf="@id/categorySpinner" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

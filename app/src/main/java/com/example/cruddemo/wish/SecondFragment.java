@@ -1,6 +1,8 @@
 package com.example.cruddemo.wish;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -8,19 +10,31 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cruddemo.R;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
 public class SecondFragment extends Fragment {
 
+    DatabaseReference databaseReference;
+
     private RecyclerView mRecyclerView;
     private MyAdapter myAdapter;
+    ArrayList<Wish> myWishes;
+    SharedPreferences sharedPreferences;
 
     @Override
     public View onCreateView(
@@ -30,36 +44,70 @@ public class SecondFragment extends Fragment {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_second, container, false);
 
+        //delete this
+        sharedPreferences = view.getContext().getSharedPreferences("SWOPsharedPreferences", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("currentUser","uid12931");
+        editor.apply();
+        //
+
+        final String thisUser =sharedPreferences.getString("currentUser","");
+
         mRecyclerView = view.findViewById(R.id.wishRecyclerView);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        myWishes = new ArrayList<Wish>();
 
-        myAdapter = new MyAdapter(view.getContext(),getMyList());
+        // take a single wish object
+        databaseReference = FirebaseDatabase.getInstance().getReference("Wishes");
+        Query query = databaseReference.orderByChild("wishOwner").equalTo(thisUser);
+        query.addListenerForSingleValueEvent(valueEventListener);
+
+        myAdapter = new MyAdapter(view.getContext(),myWishes);
         mRecyclerView.setAdapter(myAdapter);
 
         return view;
     }
 
-    private ArrayList<BarterItem> getMyList(){
+    ValueEventListener valueEventListener = new ValueEventListener() {
+        @Override
+        public void onDataChange(@NonNull DataSnapshot snapshot) {
+            myWishes.clear();
+            if(snapshot.exists()){
+                for (DataSnapshot dataSnapshot: snapshot.getChildren()){
+                    Wish mywish = dataSnapshot.getValue(Wish.class);
+                    myWishes.add(mywish);
+                }
+                myAdapter.notifyDataSetChanged();
+            }
+        }
 
-        ArrayList<BarterItem> items = new ArrayList<>();
+        @Override
+        public void onCancelled(@NonNull DatabaseError error) {
 
-        BarterItem wishItem = new BarterItem();
-        wishItem.setName("Wooden Stool");
-        wishItem.setDescription("Made of any kind of wood");
-        wishItem.setCategory("Furniture");
-        wishItem.setImg(R.drawable.stool);
-        items.add(wishItem);
+        }
+    };
 
-        wishItem = new BarterItem();
-        wishItem.setName("Small armchair");
-        wishItem.setDescription("A small one, maybe something similar to the picture?");
-        wishItem.setCategory("Furniture");
-        wishItem.setImg(R.drawable.chair);
-        items.add(wishItem);
-
-        return items;
-
-    }
+//    private ArrayList<BarterItem> getMyList(){
+//
+//        ArrayList<BarterItem> items = new ArrayList<>();
+//
+//        BarterItem wishItem = new BarterItem();
+//        wishItem.setName("Wooden Stool");
+//        wishItem.setDescription("Made of any kind of wood");
+//        wishItem.setCategory("Furniture");
+//        wishItem.setImg(R.drawable.stool);
+//        items.add(wishItem);
+//
+//        wishItem = new BarterItem();
+//        wishItem.setName("Small armchair");
+//        wishItem.setDescription("A small one, maybe something similar to the picture?");
+//        wishItem.setCategory("Furniture");
+//        wishItem.setImg(R.drawable.chair);
+//        items.add(wishItem);
+//
+//        return items;
+//
+//    }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
