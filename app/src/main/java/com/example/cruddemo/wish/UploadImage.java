@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,8 +17,11 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.cruddemo.R;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.Tasks;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
@@ -124,9 +128,24 @@ public class UploadImage extends Fragment {
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         progressUpload.dismiss();
                         //get URL
-                        String uploadedImageURL = taskSnapshot.getUploadSessionUri().toString();
-                        Toast.makeText(getView().getContext(), "Image uploaded successfully: "+uploadedImageURL, Toast.LENGTH_SHORT).show();
-                        newWishActv.sendUploadUrl(uploadedImageURL);
+                        final Task<Uri> imageTask = taskSnapshot.getMetadata().getReference().getDownloadUrl();
+                        imageTask.addOnCompleteListener(new OnCompleteListener<Uri>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Uri> task) {
+                                if(imageTask.isSuccessful()){
+                                    Uri downloadUri = imageTask.getResult();
+                                    if(downloadUri != null){
+                                        String uploadedImageURL = downloadUri.toString();
+                                        Toast.makeText(getView().getContext(), "Image uploaded successfully: "+uploadedImageURL, Toast.LENGTH_SHORT).show();
+                                        newWishActv.sendUploadUrl(uploadedImageURL);
+                                    }
+                                } else {
+                                    Log.i("Download image URL", "Unable to get the download url");
+                                }
+                            }
+                        });
+
+
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {

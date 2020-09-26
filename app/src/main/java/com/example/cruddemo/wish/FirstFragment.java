@@ -58,6 +58,7 @@ public class FirstFragment extends Fragment {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+                Log.i("Database Error",error.getMessage());
                 Toast.makeText(view.getContext(), "Sorry. Something went wrong.", Toast.LENGTH_SHORT).show();
             }
         });

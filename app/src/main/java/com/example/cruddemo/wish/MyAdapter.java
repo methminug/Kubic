@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.cruddemo.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -49,6 +50,7 @@ public class MyAdapter extends RecyclerView.Adapter<DataHolder> {
         holder.getpTitle().setText(itemModels.get(position).getWishName());
         holder.getpDesc().setText(itemModels.get(position).getWishDesc());
         holder.getpCateg().setText(itemModels.get(position).getWishCategory());
+        Glide.with(appContext).load(itemModels.get(position).getImageURL()).into(holder.getpImageView());
         //holder.getpWishedBy().setText("Wished by: "+ itemModels.get(position).getWishOwner());
         String ownerID = itemModels.get(position).getWishOwner();
         usersdatabaseReference = FirebaseDatabase.getInstance().getReference("Users").child(ownerID);
