@@ -5,8 +5,17 @@ public class Wish {
     private String wishDesc;
     private String wishCategory;
     private String wishOwner;
+    private String imageURL;
 
     public Wish() {
+    }
+
+    public String getImageURL() {
+        return imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
     }
 
     public String getWishOwner() {

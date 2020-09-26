@@ -116,6 +116,8 @@ public class UploadImage extends Fragment {
         final String randomKey = UUID.randomUUID().toString();
         StorageReference riversRef = storageReference.child("images/" + randomKey);
 
+        final AddNewWish newWishActv = (AddNewWish) getActivity();
+
         riversRef.putFile(imageUri)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
@@ -124,6 +126,7 @@ public class UploadImage extends Fragment {
                         //get URL
                         String uploadedImageURL = taskSnapshot.getUploadSessionUri().toString();
                         Toast.makeText(getView().getContext(), "Image uploaded successfully: "+uploadedImageURL, Toast.LENGTH_SHORT).show();
+                        newWishActv.sendUploadUrl(uploadedImageURL);
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {

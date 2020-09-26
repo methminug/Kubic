@@ -2,6 +2,8 @@ package com.example.cruddemo.wish;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.cruddemo.R;
@@ -32,6 +35,7 @@ public class AddNewWish extends AppCompatActivity {
     SharedPreferences sharedPreferences;
 
     private EditText txtname, txtdesc;
+    String uploadedImg;
     private Spinner txtcate;
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference myRef = database.getReference("Wishes");
@@ -47,6 +51,12 @@ public class AddNewWish extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.new_wish);
+
+        FragmentManager fragManager = getSupportFragmentManager();
+        FragmentTransaction fragTransaction = fragManager.beginTransaction();
+        UploadImage imageUploadfrag = new UploadImage();
+        fragTransaction.add(R.id.fragment, imageUploadfrag);
+        fragTransaction.commit();
 
         sharedPreferences = getApplicationContext().getSharedPreferences("SWOPsharedPreferences", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -105,6 +115,7 @@ public class AddNewWish extends AppCompatActivity {
                     newWish.setWishDesc(txtdesc.getText().toString().trim());
                     newWish.setWishCategory(txtcate.getSelectedItem().toString().trim());
                     newWish.setWishOwner(currUser);
+                    newWish.setImageURL(uploadedImg);
 
                     DatabaseReference anewWish = myRef.push();
                     anewWish.setValue(newWish);
@@ -118,5 +129,9 @@ public class AddNewWish extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void sendUploadUrl (String strURL){
+        uploadedImg = strURL;
     }
 }

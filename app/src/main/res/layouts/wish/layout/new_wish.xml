@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/newWishLayout"
     tools:context=".wish.AddNewWish">
 
-    <fragment
+    <LinearLayout
         android:tag="imageUpload"
         android:id="@+id/fragment"
         android:name="com.example.cruddemo.wish.UploadImage"
@@ -17,8 +18,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/title_first"
-        tools:layout="@layout/fragment_upload_image" />
+        android:orientation="vertical">
 
+    </LinearLayout>
 
     <TextView
         android:id="@+id/title_first"
