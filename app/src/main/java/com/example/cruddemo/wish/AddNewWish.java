@@ -27,6 +27,8 @@ import java.util.List;
 
 public class AddNewWish extends AppCompatActivity {
 
+    //SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("SWOPsharedPreferences", MODE_PRIVATE);
+    //SharedPreferences.Editor preferencesEdit = sharedPreferences.edit().putString("currentUser","uid12931");
     SharedPreferences sharedPreferences;
 
     private EditText txtname, txtdesc;
