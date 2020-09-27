@@ -8,11 +8,13 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cruddemo.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class DataHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     ImageView pImageView;
     TextView pDesc, pTitle, pCateg, pWishedBy;
+    FloatingActionButton actionButton;
     MyAdapter.OnWishListener onWishListener;
 
     public DataHolder(@NonNull View itemView, int wishType, MyAdapter.OnWishListener onWishListener) {
@@ -22,12 +24,12 @@ public class DataHolder extends RecyclerView.ViewHolder implements View.OnClickL
         this.pDesc = itemView.findViewById(R.id.wishItemDesc);
         this.pCateg = itemView.findViewById(R.id.wishCategory);
         this.onWishListener = onWishListener;
+        this.actionButton = itemView.findViewById(R.id.actionbtn);
         if (wishType == 0){
             this.pWishedBy = itemView.findViewById(R.id.username);
-        }
+        }  //else reference to delete icon
 
-        //SET TO BUTTON
-        itemView.setOnClickListener(this);
+        actionButton.setOnClickListener(this);
 
     }
 

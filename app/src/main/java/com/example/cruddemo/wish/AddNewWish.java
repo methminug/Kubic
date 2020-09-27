@@ -47,8 +47,6 @@ public class AddNewWish extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        // ADD USERid AND NAVIGATION!!!!!!!!!
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.new_wish);
 

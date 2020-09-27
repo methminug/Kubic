@@ -87,28 +87,6 @@ public class SecondFragment extends Fragment implements MyAdapter.OnWishListener
         }
     };
 
-//    private ArrayList<BarterItem> getMyList(){
-//
-//        ArrayList<BarterItem> items = new ArrayList<>();
-//
-//        BarterItem wishItem = new BarterItem();
-//        wishItem.setName("Wooden Stool");
-//        wishItem.setDescription("Made of any kind of wood");
-//        wishItem.setCategory("Furniture");
-//        wishItem.setImg(R.drawable.stool);
-//        items.add(wishItem);
-//
-//        wishItem = new BarterItem();
-//        wishItem.setName("Small armchair");
-//        wishItem.setDescription("A small one, maybe something similar to the picture?");
-//        wishItem.setCategory("Furniture");
-//        wishItem.setImg(R.drawable.chair);
-//        items.add(wishItem);
-//
-//        return items;
-//
-//    }
-
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
@@ -136,9 +114,8 @@ public class SecondFragment extends Fragment implements MyAdapter.OnWishListener
 
     @Override
     public void OnWishClick(int position) {
-        Wish thisWish = myWishes.get(position);
         Intent intent = new Intent(getContext(), EditWishActivity.class);
-        intent.putExtra("theDesc",thisWish.getWishDesc());
+        intent.putExtra("theWish",myWishes.get(position));
         //attach wish as parcelable
         startActivity(intent);
     }
