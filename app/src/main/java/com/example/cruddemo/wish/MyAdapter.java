@@ -23,16 +23,31 @@ public class MyAdapter extends RecyclerView.Adapter<DataHolder> {
 
     Context appContext;
     ArrayList<Wish> itemModels;
+    int wishType;
     DatabaseReference usersdatabaseReference;
+    private OnWishListener monWishListener = null;
 
-    public MyAdapter(Context appContext, ArrayList<Wish> itemModels) {
+    public MyAdapter(Context appContext, ArrayList<Wish> itemModels, int typeOfWish, OnWishListener onWishListener) {
         this.appContext = appContext;
         this.itemModels = itemModels;
+        this.wishType = typeOfWish;
+        this.monWishListener = onWishListener;
+    }
+
+    public MyAdapter(Context appContext, ArrayList<Wish> itemModels, int typeOfWish) {
+        this.appContext = appContext;
+        this.itemModels = itemModels;
+        this.wishType = typeOfWish;
     }
 
     @Override
     public int getItemViewType(int position) {
-        return  R.layout.a_wish;
+        if(wishType == 0){
+            return  R.layout.a_wish;
+        } else{
+            return  R.layout.my_wish;
+        }
+
     }
 
     @NonNull
@@ -41,7 +56,7 @@ public class MyAdapter extends RecyclerView.Adapter<DataHolder> {
 
         View view = LayoutInflater.from(parent.getContext()).inflate(viewType, parent, false);
 
-        return new DataHolder(view);
+        return new DataHolder(view, wishType, monWishListener);
     }
 
     @Override
@@ -52,24 +67,27 @@ public class MyAdapter extends RecyclerView.Adapter<DataHolder> {
         holder.getpCateg().setText(itemModels.get(position).getWishCategory());
         Glide.with(appContext).load(itemModels.get(position).getImageURL()).into(holder.getpImageView());
         //holder.getpWishedBy().setText("Wished by: "+ itemModels.get(position).getWishOwner());
-        String ownerID = itemModels.get(position).getWishOwner();
-        usersdatabaseReference = FirebaseDatabase.getInstance().getReference("Users").child(ownerID);
-        usersdatabaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String uname = snapshot.child("Username").getValue().toString();
-                if(uname != null){
-                    Log.w("This Username", uname);
-                    holder.getpWishedBy().setText("Wished by: "+  uname );
+        if(wishType == 0){
+            String ownerID = itemModels.get(position).getWishOwner();
+            usersdatabaseReference = FirebaseDatabase.getInstance().getReference("Users").child(ownerID);
+            usersdatabaseReference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    String uname = snapshot.child("Username").getValue().toString();
+                    if(uname != null){
+                        Log.w("This Username", uname);
+                        holder.getpWishedBy().setText("Wished by: "+  uname );
+                    }
+
                 }
 
-            }
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+                }
+            });
+        }
 
-            }
-        });
 
         //holder.getpImageView().setImageResource(itemModels.get(position).getImg());
 
@@ -78,5 +96,9 @@ public class MyAdapter extends RecyclerView.Adapter<DataHolder> {
     @Override
     public int getItemCount() {
         return itemModels.size();
+    }
+
+    public interface OnWishListener{
+        void OnWishClick(int position);
     }
 }

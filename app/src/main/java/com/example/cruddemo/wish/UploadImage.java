@@ -127,12 +127,13 @@ public class UploadImage extends Fragment {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         progressUpload.dismiss();
-                        //get URL
+
                         final Task<Uri> imageTask = taskSnapshot.getMetadata().getReference().getDownloadUrl();
                         imageTask.addOnCompleteListener(new OnCompleteListener<Uri>() {
                             @Override
                             public void onComplete(@NonNull Task<Uri> task) {
                                 if(imageTask.isSuccessful()){
+                                    //getting download URL
                                     Uri downloadUri = imageTask.getResult();
                                     if(downloadUri != null){
                                         String uploadedImageURL = downloadUri.toString();

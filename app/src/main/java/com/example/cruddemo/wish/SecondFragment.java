@@ -27,7 +27,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class SecondFragment extends Fragment {
+public class SecondFragment extends Fragment implements MyAdapter.OnWishListener {
 
     DatabaseReference databaseReference;
 
@@ -62,7 +62,7 @@ public class SecondFragment extends Fragment {
         Query query = databaseReference.orderByChild("wishOwner").equalTo(thisUser);
         query.addListenerForSingleValueEvent(valueEventListener);
 
-        myAdapter = new MyAdapter(view.getContext(),myWishes);
+        myAdapter = new MyAdapter(view.getContext(),myWishes,1, this);
         mRecyclerView.setAdapter(myAdapter);
 
         return view;
@@ -134,4 +134,12 @@ public class SecondFragment extends Fragment {
     }
 
 
+    @Override
+    public void OnWishClick(int position) {
+        Wish thisWish = myWishes.get(position);
+        Intent intent = new Intent(getContext(), EditWishActivity.class);
+        intent.putExtra("theDesc",thisWish.getWishDesc());
+        //attach wish as parcelable
+        startActivity(intent);
+    }
 }

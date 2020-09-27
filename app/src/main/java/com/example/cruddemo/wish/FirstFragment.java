@@ -1,5 +1,6 @@
 package com.example.cruddemo.wish;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,9 +21,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.security.AccessController;
 import java.util.ArrayList;
 
-public class FirstFragment extends Fragment {
+public class FirstFragment extends Fragment implements MyAdapter.OnWishListener{
 
     DatabaseReference databaseReference;
 
@@ -44,6 +46,7 @@ public class FirstFragment extends Fragment {
         allWishes = new ArrayList<Wish>();
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Wishes");
+        final MyAdapter.OnWishListener listener = this;
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -52,7 +55,7 @@ public class FirstFragment extends Fragment {
                     final Wish wish = dataSnapshot.getValue(Wish.class);
                     allWishes.add(wish);
                 }
-                myAdapter = new MyAdapter(view.getContext(),allWishes);
+                myAdapter = new MyAdapter(view.getContext(),allWishes,0,listener);
                 mRecyclerView.setAdapter(myAdapter);
             }
 
@@ -91,5 +94,14 @@ public class FirstFragment extends Fragment {
                         .navigate(R.id.action_FirstFragment_to_SecondFragment);
             }
         });
+    }
+
+    @Override
+    public void OnWishClick(int position) {
+        Wish thisWish = allWishes.get(position);
+        Intent intent = new Intent(getContext(), ConnectUserActivity.class);
+        intent.putExtra("theUser",thisWish.getWishOwner());
+        //attach wish with parcelable
+        startActivity(intent);
     }
 }
