@@ -106,7 +106,7 @@ public class EditWishActivity extends AppCompatActivity {
 
         editName.setText(thisWish.getWishName());
         editDesc.setText(thisWish.getWishDesc());
-        Log.i("img URL",thisWish.getImageURL());
+        //Log.i("img URL",thisWish.getImageURL());
         //Uri thisImgURI = Uri.parse(thisWish.getImageURL());
         //Log.i("Parse URL",thisWish.getImageURL());
 
@@ -136,8 +136,14 @@ public class EditWishActivity extends AppCompatActivity {
                     newWish.setWishDesc(editDesc.getText().toString().trim());
                     newWish.setWishCategory(editCate.getSelectedItem().toString().trim());
                     newWish.setWishOwner(currUser);
-                    if(uploadedImg != null){
-                        newWish.setImageURL(uploadedImg);
+                    if(uploadedImg!=null){
+                        Log.i("imgURL",uploadedImg);
+                        if(uploadedImg.contains("https")){
+                            newWish.setImageURL(uploadedImg);
+                        }
+
+                    }else{
+                        newWish.setImageURL(thisWish.getImageURL());
                     }
 
 
