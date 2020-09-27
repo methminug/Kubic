@@ -9,8 +9,8 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -23,7 +23,6 @@ import com.example.cruddemo.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
@@ -37,7 +36,8 @@ public class EditWishActivity extends AppCompatActivity {
     EditText editDesc, editName;
     Spinner editCate;
     SharedPreferences sharedPreferences;
-    String uploadedImg;
+    String uploadedImg = null;
+    ImageView editImg;
 
     private DataBaseServices dataBaseServices = new DataBaseServices();
     DatabaseReference categoryList = dataBaseServices.getCategoriesRef();
@@ -48,9 +48,13 @@ public class EditWishActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.new_wish);
 
+        Log.d(TAG, "onCreate: Activity started");
+        Intent intent = getIntent();
+        final Wish thisWish = intent.getParcelableExtra("theWish");
+
         FragmentManager fragManager = getSupportFragmentManager();
         FragmentTransaction fragTransaction = fragManager.beginTransaction();
-        UploadImage imageUploadfrag = new UploadImage();
+        UploadImage imageUploadfrag = new UploadImage(thisWish.getImageURL());
         fragTransaction.add(R.id.fragment, imageUploadfrag);
         fragTransaction.commit();
 
@@ -59,9 +63,7 @@ public class EditWishActivity extends AppCompatActivity {
         editor.putString("currentUser","uid12931");
         editor.apply();
 
-        Log.d(TAG, "onCreate: Activity started");
-        Intent intent = getIntent();
-        final Wish thisWish = intent.getParcelableExtra("theWish");
+
 
 
         final String category = thisWish.getWishCategory();
@@ -100,9 +102,15 @@ public class EditWishActivity extends AppCompatActivity {
         editDesc = findViewById(R.id.editTextItemDesc);
         editName = findViewById(R.id.editTextItemName);
         editCate = findViewById(R.id.categorySpinner);
+        editImg = findViewById(R.id.new_selected_image);
 
         editName.setText(thisWish.getWishName());
         editDesc.setText(thisWish.getWishDesc());
+        Log.i("img URL",thisWish.getImageURL());
+        //Uri thisImgURI = Uri.parse(thisWish.getImageURL());
+        //Log.i("Parse URL",thisWish.getImageURL());
+
+        //Glide.with(imageUploadfrag.getContext()).load(thisWish.getImageURL()).into(editImg);
 
         Button btnUpdate = findViewById(R.id.button_post);
 
@@ -128,7 +136,10 @@ public class EditWishActivity extends AppCompatActivity {
                     newWish.setWishDesc(editDesc.getText().toString().trim());
                     newWish.setWishCategory(editCate.getSelectedItem().toString().trim());
                     newWish.setWishOwner(currUser);
-                    newWish.setImageURL(uploadedImg);
+                    if(uploadedImg != null){
+                        newWish.setImageURL(uploadedImg);
+                    }
+
 
                     //get wish ID and update
 
@@ -146,5 +157,8 @@ public class EditWishActivity extends AppCompatActivity {
         });
 
 
+    }
+    public void sendUploadUrl (String strURL){
+        uploadedImg = strURL;
     }
 }

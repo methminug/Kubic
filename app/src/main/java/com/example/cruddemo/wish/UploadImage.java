@@ -16,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
 import com.example.cruddemo.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -33,7 +34,7 @@ import java.util.UUID;
 import static android.app.Activity.RESULT_OK;
 
 public class UploadImage extends Fragment {
-
+    private String displayImg = null;
     private ImageView itemPic;
     private FloatingActionButton addImage;
     //why public
@@ -41,21 +42,17 @@ public class UploadImage extends Fragment {
     private FirebaseStorage firebaseStorage;
     private StorageReference storageReference;
 
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    private String mParam1;
-    private String mParam2;
-
     public UploadImage() {
         // Required empty public constructor
+    }
+
+    public UploadImage(String displayImg) {
+        this.displayImg = displayImg;
     }
 
     public static UploadImage newInstance(String param1, String param2) {
         UploadImage fragment = new UploadImage();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -65,8 +62,6 @@ public class UploadImage extends Fragment {
         super.onCreate(savedInstanceState);
 
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
 
@@ -78,6 +73,11 @@ public class UploadImage extends Fragment {
 
         addImage = view.findViewById(R.id.additemimage);
         itemPic = view.findViewById(R.id.new_selected_image);
+
+        if(displayImg != null){
+            Glide.with(getContext()).load(displayImg).into(itemPic);
+        }
+
 
         firebaseStorage = FirebaseStorage.getInstance();
         storageReference = firebaseStorage.getReference();
@@ -107,6 +107,7 @@ public class UploadImage extends Fragment {
         if(requestCode ==1 && resultCode == RESULT_OK && data!=null && data.getData()!=null){
             imageUri = data.getData();
             itemPic.setImageURI(imageUri);
+            Log.i("new image URI",imageUri.toString());
             uploadPicture();
         }
     }
@@ -114,13 +115,13 @@ public class UploadImage extends Fragment {
     private void uploadPicture() {
 
         final ProgressDialog progressUpload = new ProgressDialog(getView().getContext());
+
         progressUpload.setTitle("Uploading your image");
         progressUpload.show();
 
         final String randomKey = UUID.randomUUID().toString();
         StorageReference riversRef = storageReference.child("images/" + randomKey);
 
-        final AddNewWish newWishActv = (AddNewWish) getActivity();
 
         riversRef.putFile(imageUri)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -137,8 +138,15 @@ public class UploadImage extends Fragment {
                                     Uri downloadUri = imageTask.getResult();
                                     if(downloadUri != null){
                                         String uploadedImageURL = downloadUri.toString();
-                                        Toast.makeText(getView().getContext(), "Image uploaded successfully: "+uploadedImageURL, Toast.LENGTH_SHORT).show();
-                                        newWishActv.sendUploadUrl(uploadedImageURL);
+                                        Toast.makeText(getView().getContext(), "Image uploaded successfully", Toast.LENGTH_SHORT).show();
+                                        if(displayImg!=null){
+                                            final EditWishActivity editWishActiv = (EditWishActivity) getActivity();
+                                            editWishActiv.sendUploadUrl(uploadedImageURL);
+                                        }else{
+                                            final AddNewWish newWishActv = (AddNewWish) getActivity();
+                                            newWishActv.sendUploadUrl(uploadedImageURL);
+                                        }
+
                                     }
                                 } else {
                                     Log.i("Download image URL", "Unable to get the download url");
