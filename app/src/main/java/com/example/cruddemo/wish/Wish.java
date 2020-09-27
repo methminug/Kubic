@@ -9,6 +9,7 @@ public class Wish implements Parcelable {
     private String wishCategory;
     private String wishOwner;
     private String imageURL;
+    private String wishKey;
 
     public Wish() {
     }
@@ -19,6 +20,7 @@ public class Wish implements Parcelable {
         wishCategory = in.readString();
         wishOwner = in.readString();
         imageURL = in.readString();
+        wishKey = in.readString();
     }
 
     public static final Creator<Wish> CREATOR = new Creator<Wish>() {
@@ -73,6 +75,14 @@ public class Wish implements Parcelable {
         this.wishCategory = wishCategory;
     }
 
+    public String getWishKey() {
+        return wishKey;
+    }
+
+    public void setWishKey(String wishKey) {
+        this.wishKey = wishKey;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -85,6 +95,7 @@ public class Wish implements Parcelable {
         parcel.writeString(wishCategory);
         parcel.writeString(wishOwner);
         parcel.writeString(imageURL);
+        parcel.writeString(wishKey);
     }
 }
 

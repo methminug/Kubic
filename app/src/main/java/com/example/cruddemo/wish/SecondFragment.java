@@ -75,6 +75,7 @@ public class SecondFragment extends Fragment implements MyAdapter.OnWishListener
             if(snapshot.exists()){
                 for (DataSnapshot dataSnapshot: snapshot.getChildren()){
                     Wish mywish = dataSnapshot.getValue(Wish.class);
+                    mywish.setWishKey(dataSnapshot.getKey());
                     myWishes.add(mywish);
                 }
                 myAdapter.notifyDataSetChanged();
