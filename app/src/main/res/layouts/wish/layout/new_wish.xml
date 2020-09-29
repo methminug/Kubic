@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".wish.AddNewWish">
+
+    <fragment
+        android:tag="imageUpload"
+        android:id="@+id/fragment"
+        android:name="com.example.cruddemo.wish.UploadImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="120dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/title_first"
+        tools:layout="@layout/fragment_upload_image" />
+
+
+    <TextView
+        android:id="@+id/title_first"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/titleItemName"
+        android:textAppearance="@style/TitleTextAppearance"
+        android:paddingLeft="50dp"
+        app:layout_constraintBottom_toTopOf="@id/editTextItemName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fragment" />
+
+    <EditText
+        android:id="@+id/editTextItemName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Name"
+        android:layout_marginLeft="50dp"
+        android:textSize="50px"
+        android:background="#00000000"
+        app:layout_constraintBottom_toTopOf="@id/title_second"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title_first"
+        />
+
+    <TextView
+        android:id="@+id/title_second"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/titleDesc"
+        app:layout_constraintBottom_toTopOf="@id/title_third"
+        android:textAppearance="@style/TitleTextAppearance"
+        android:paddingLeft="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title_first" />
+
+    <EditText
+        android:id="@+id/editTextItemDesc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:hint="Describe your item"
+        android:layout_marginLeft="50dp"
+        android:background="#00000000"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title_second"
+        />
+
+    <TextView
+        android:id="@+id/title_third"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="50dp"
+        android:text="@string/titleCategory"
+        android:textAppearance="@style/TitleTextAppearance"
+        app:layout_constraintBottom_toTopOf="@id/editTextItemCategory"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextItemDesc" />
+
+    <EditText
+        android:id="@+id/editTextItemCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:hint="Describe your item"
+        android:layout_marginLeft="50dp"
+        android:background="#00000000"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title_third"
+        />
+
+    <!--    <Spinner-->
+    <!--        android:id="@+id/categorySpinner"-->
+    <!--        android:layout_width="408dp"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:entries="@array/catgeorySpinner"-->
+    <!--        android:paddingLeft="50dp"-->
+    <!--        android:paddingRight="50dp"-->
+    <!--        app:layout_constraintBottom_toTopOf="@id/button_post"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@id/title_third" />-->
+
+    <Button
+        android:id="@+id/button_post"
+        android:layout_width="wrap_content"
+        android:layout_height="100px"
+        android:paddingLeft="100px"
+        android:paddingRight="100px"
+        android:text="@string/postWishItem"
+        android:background="@drawable/rounded_button"
+        android:textColor="#ffff"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextItemCategory" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

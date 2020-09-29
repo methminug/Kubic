@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">SWOP</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+
+
+    <string name="mainWishlist">All wishes appear here</string>
+    <string name="myWishlist">User wishes appear here</string>
+    <string name="title_activity_display_info">displayInfo</string>
+
+    <!-- Strings used for fragments for navigation -->
+
+    <string name="postWishItem">Post to Wish List</string>
+
+    <string name="titleItemName">Item Name</string>
+    <string name="titleDesc">Item Description</string>
+    <string name="titleCategory">Category</string>
+
+    <!--    Tooltips-->
+    <string name="toolHeart">Your wishes</string>
+    <string name="toolPlus">Add a wish</string>
+    <string name="toolOffer">Make an offer</string>
+    <string name="txtUname">User Name :</string>
+    <string name="txtAddress">User\'s Address :</string>
+    <string name="txtEmail">User\'s Email :</string>
+    <string name="txtPhone">Phone :</string>
+    <string name="txtPassword">Password :</string>
+    <string name="topic">User Details</string>
+    <string name="btnDel">Delete</string>
+    <string name="btnUp">Update</string>
+    <string name="txtSign">User Profile</string>
+    <string name="txtName">User Name :</string>
+    <string name="txtAdd">User\'s Address :</string>
+    <string name="txtUEmail">User\'s Email :</string>
+    <string name="txtUPhone">Phone :</string>
+    <string name="txtUPass">Password :</string>
+    <string name="butUp">UPDATE</string>
+    <string name="butDel">DELETE</string>
+    <string name="txtSignUp">"Sign Up Here "</string>
+
+    <string-array name="catgeorySpinner">
+        <item>Furniture</item>
+        <item>Books</item>
+        <item>Electronics</item>
+        <item>Accessories</item>
+        <item>Cookware</item>
+        <item>Miscellaneous</item>
+    </string-array>
+</resources>

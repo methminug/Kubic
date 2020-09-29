@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--    METHMI-->
+    <color name="colorPrimary">#009688</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#00BCD4</color>
+    <color name="placeholder">#757575</color>
+    <color name="title_color">#1B1919</color>
+    <color name="buttons">#FF9800</color>
+
+    <!--    JAYANI-->
+    <color name="b">#fb7813</color>
+    <color name="c">#17706e</color>
+    <color name="d">#b6eb7a</color>
+
+    <!--    TASHEN-->
+    <color name="colorTextBoxBack">#0A5D5B</color>
+    <color name="colorHint">#c3acacac</color>
+    <color name="colorInput">#FFFFFF</color>
+</resources>

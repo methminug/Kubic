@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="20dp"
+        android:id="@+id/sec1">
+
+        <ImageView
+            android:id="@+id/backicon"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:src="@drawable/back"
+            />
+
+        <TextView
+            android:id="@+id/postHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/backicon"
+            android:text="Post An Item"
+            android:textSize="35dp"
+            tools:layout_editor_absoluteX="70dp"
+            tools:layout_editor_absoluteY="10dp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/sec2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/sec1">
+
+        <TextView
+            android:id="@+id/txt1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Item Name"
+            android:textSize="35dp"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="96dp" />
+
+        <ImageView
+
+            android:layout_width="39dp"
+            android:layout_height="38dp"
+            android:src="@drawable/pencil"
+            app:layout_constraintBottom_toBottomOf="@id/txt1"
+            android:layout_toRightOf="@id/txt1"
+            android:layout_marginLeft="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/txt1"
+            android:layout_alignBottom="@id/txt1"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:id="@+id/sec3"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/sec2"
+        android:orientation="vertical">
+
+        <fragment
+            android:tag="ImageUpload"
+            android:id="@+id/fragment"
+            android:name="com.example.mad.UploadImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:layout="@layout/fragment_upload_image" />
+
+        <EditText
+            android:id="@+id/condition"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@color/colorAccent"
+            android:hint="Condition"
+            android:inputType="text"
+            android:padding="5dp"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/exchanged"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@color/colorAccent"
+            android:hint="Exchanged For"
+            android:inputType="text"
+            android:padding="5dp"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/value"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@color/colorAccent"
+            android:hint="RS."
+            android:inputType="text"
+            android:padding="5dp"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/desc"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@color/colorAccent"
+            android:hint="Description"
+            android:inputType="text"
+            android:padding="5dp"
+            android:textSize="20sp" />
+
+        <Button
+
+            android:layout_width="230dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:background="@color/colorPrimaryDark"
+            android:text="POST ITem"
+            android:textSize="28sp" />
+
+    </LinearLayout>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
