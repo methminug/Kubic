@@ -24,6 +24,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.functions.FirebaseFunctions;
 
 import java.util.ArrayList;
 
@@ -32,6 +33,7 @@ public class SecondFragment extends Fragment implements MyAdapter.OnWishListener
     DatabaseReference databaseReference;
 
     private RecyclerView mRecyclerView;
+    FirebaseFunctions firebaseFunctions;
     private MyAdapter myAdapter;
     ArrayList<Wish> myWishes;
     SharedPreferences sharedPreferences;
@@ -58,6 +60,7 @@ public class SecondFragment extends Fragment implements MyAdapter.OnWishListener
         myWishes = new ArrayList<Wish>();
 
         // take a single wish object
+        firebaseFunctions = FirebaseFunctions.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference("Wishes");
         Query query = databaseReference.orderByChild("wishOwner").equalTo(thisUser);
         query.addListenerForSingleValueEvent(valueEventListener);
@@ -104,7 +107,7 @@ public class SecondFragment extends Fragment implements MyAdapter.OnWishListener
             @Override
             public void onClick(View view) {
                 final Intent intent = new Intent(view.getContext(), AddNewWish.class);
-                Log.i("WishBtm","Create new wish clicked");
+                Log.i("WishBtn","Create new wish clicked");
                 //Start activity 2
                 startActivity(intent);
 
@@ -116,8 +119,9 @@ public class SecondFragment extends Fragment implements MyAdapter.OnWishListener
     @Override
     public void OnWishClick(int position) {
         Intent intent = new Intent(getContext(), EditWishActivity.class);
-        intent.putExtra("theWish",myWishes.get(position));
         //attach wish as parcelable
+        intent.putExtra("theWish",myWishes.get(position));
+
         startActivity(intent);
     }
 }

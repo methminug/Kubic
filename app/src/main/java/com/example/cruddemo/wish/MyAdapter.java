@@ -66,7 +66,6 @@ public class MyAdapter extends RecyclerView.Adapter<DataHolder> {
         holder.getpDesc().setText(itemModels.get(position).getWishDesc());
         holder.getpCateg().setText(itemModels.get(position).getWishCategory());
         Glide.with(appContext).load(itemModels.get(position).getImageURL()).into(holder.getpImageView());
-        //holder.getpWishedBy().setText("Wished by: "+ itemModels.get(position).getWishOwner());
         if(wishType == 0){
             String ownerID = itemModels.get(position).getWishOwner();
             usersdatabaseReference = FirebaseDatabase.getInstance().getReference("Users").child(ownerID);
@@ -76,7 +75,7 @@ public class MyAdapter extends RecyclerView.Adapter<DataHolder> {
                     String uname = snapshot.child("Username").getValue().toString();
                     if(uname != null){
                         Log.w("This Username", uname);
-                        holder.getpWishedBy().setText("Wished by: "+  uname );
+                        holder.getpWishedBy().setText(uname );
                     }
 
                 }

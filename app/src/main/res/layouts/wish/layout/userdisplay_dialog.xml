@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/cardview_light_background"
+    android:padding="40dp"
+    app:layout_constraintCircleRadius="50dp"
+    android:layout_gravity="center">
+
+    <TextView
+
+        android:id="@+id/dialogtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:text="Connect with"
+        android:textAppearance="@style/TitleTextAppearance"
+        android:textSize="30dp" />
+
+    <TextView
+        android:background="@drawable/chip_back"
+        android:padding="10dp"
+        android:id="@+id/userNameDisp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dialogtitle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp"
+        android:text="TextView"
+        android:textColor="#ffff"
+        android:textSize="20sp" />
+
+    <ImageView
+        android:layout_centerHorizontal="true"
+        android:id="@+id/userAvatar"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_below="@id/userNameDisp"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/userAvatar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TitleTextAppearance"
+        android:text="Phone"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:id="@+id/titlephone"/>
+
+    <TextView
+        android:id="@+id/userPhoneDisp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/titlephone"
+        android:layout_centerHorizontal="true"
+        android:text="TextView"
+        android:textSize="20sp" />
+
+</RelativeLayout>

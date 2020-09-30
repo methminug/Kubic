@@ -1,5 +1,7 @@
 package com.example.cruddemo.wish;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -7,6 +9,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -15,7 +19,9 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.cruddemo.R;
+import com.example.cruddemo.user.User;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,6 +34,7 @@ import java.util.ArrayList;
 public class FirstFragment extends Fragment implements MyAdapter.OnWishListener{
 
     DatabaseReference databaseReference;
+    DataBaseServices dataBaseServices = new DataBaseServices();
 
     private RecyclerView mRecyclerView;
     private MyAdapter myAdapter;
@@ -70,21 +77,6 @@ public class FirstFragment extends Fragment implements MyAdapter.OnWishListener{
         return view;
     }
 
-//    private ArrayList<BarterItem> getAllList(){
-//
-//        ArrayList<BarterItem> items = new ArrayList<>();
-//
-//        BarterItem wishItem = new BarterItem();
-//        wishItem.setName("Fountain pen");
-//        wishItem.setDescription("Blue Ink. Preferably Second hand");
-//        wishItem.setCategory("Miscellaneous");
-//        wishItem.setImg(R.drawable.pen);
-//        items.add(wishItem);
-//
-//        return items;
-//
-//    }
-
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
@@ -100,9 +92,17 @@ public class FirstFragment extends Fragment implements MyAdapter.OnWishListener{
     @Override
     public void OnWishClick(int position) {
         Wish thisWish = allWishes.get(position);
-        Intent intent = new Intent(getContext(), ConnectUserActivity.class);
-        intent.putExtra("theUser",thisWish.getWishOwner());
-        //attach wish with parcelable
-        startActivity(intent);
+        Dialog dialog = new Dialog(getContext());
+        dialog.setContentView(R.layout.userdisplay_dialog);
+
+        ImageView dialogImg = dialog.findViewById(R.id.userAvatar);
+        TextView usernametxt = dialog.findViewById(R.id.userNameDisp);
+        TextView userphone = dialog.findViewById(R.id.userPhoneDisp);
+
+        //try with Otto eventbus to wait for this line to complete
+        dataBaseServices.getAUserDialog(getContext(),thisWish.getWishOwner(), usernametxt, userphone,dialogImg);
+
+        dialog.show();
+
     }
 }
