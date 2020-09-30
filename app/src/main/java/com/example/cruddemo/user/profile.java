@@ -1,6 +1,9 @@
 package com.example.cruddemo.user;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -40,23 +43,29 @@ public class profile extends AppCompatActivity {
 
         usd = new Users();
 
+        final SharedPreferences preferences = getSharedPreferences("SWOPsharedPreferences", MODE_PRIVATE);
+        final String currUser =preferences.getString("currentUser","");
+
         butUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 DatabaseReference updRef = FirebaseDatabase.getInstance().getReference().child("Users");
+
+
                 updRef.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if (snapshot.hasChild("usd1")){
+                        if (snapshot.hasChild(currUser)){
                             try{
-                                usd.setName(txtName.getText().toString().trim());
+                                usd.setUsername(txtName.getText().toString().trim());
                                 usd.setAddress(txtAdd.getText().toString().trim());
                                 usd.setEmail(txtEmail.getText().toString().trim());
                                 usd.setPhone(Integer.parseInt(txtPhone.getText().toString().trim()));
-                                usd.setPassword(txtName.getText().toString().trim());
+                                usd.setPassword(txtPassword.getText().toString().trim());
 
-                                dbRef = FirebaseDatabase.getInstance().getReference().child("Users").child("usd1");
+
+                                dbRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currUser);
                                 dbRef.setValue(usd);
                                 clearControls();
                                 Toast.makeText(getApplicationContext(), "Data Updated Successfully", Toast.LENGTH_SHORT).show();
@@ -87,8 +96,8 @@ public class profile extends AppCompatActivity {
                 updRef.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if(snapshot.hasChild("usd1")){
-                            dbRef = FirebaseDatabase.getInstance().getReference().child("Users").child("usd1");
+                        if(snapshot.hasChild(currUser)){
+                            dbRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currUser);
                             dbRef.removeValue();
                             clearControls();
                             Toast.makeText(getApplicationContext(), "Data Deleted Successfully", Toast.LENGTH_SHORT).show();

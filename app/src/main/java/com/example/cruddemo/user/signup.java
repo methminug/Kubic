@@ -1,5 +1,6 @@
 package com.example.cruddemo.user;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -19,6 +20,7 @@ public class signup extends AppCompatActivity {
     Button butSign;
     DatabaseReference dbRef;
     Users usd;
+
 
 
     @Override
@@ -57,14 +59,21 @@ public class signup extends AppCompatActivity {
 
                     else {
 
-                        usd.setName(txtName.getText().toString().trim());
+                        usd.setUsername(txtName.getText().toString().trim());
                         usd.setAddress(txtAdd.getText().toString().trim());
                         usd.setEmail(txtEmail.getText().toString().trim());
                         usd.setPhone(Integer.parseInt(txtPhone.getText().toString().trim()));
                         usd.setPassword(txtPassword.getText().toString().trim());
-                        dbRef.child("usd1").setValue(usd);
+
+                        dbRef.push().setValue(usd);
+
+                        //dbRef.child(usd.getUsername()).setValue(usd);
                         Toast.makeText(getApplicationContext(), "Successfully inserted", Toast.LENGTH_SHORT).show();
                         clearControls();
+
+                        //GOES TO LOGIN PAGE
+                        Intent intent = new Intent(getApplicationContext(),login.class);
+                        startActivity(intent);
                     }
                 }
                 catch (NumberFormatException nfe){

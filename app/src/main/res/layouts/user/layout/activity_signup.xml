@@ -125,7 +125,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.557"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/EtInputEmail" />
+        app:layout_constraintTop_toBottomOf="@id/EtInputEmail" />
 
     <Button
 
@@ -141,7 +141,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/EtInputPhone"
+        app:layout_constraintTop_toBottomOf="@id/EtInputPhone"
         app:layout_constraintVertical_bias="0.294" />
 
     <TextView

@@ -1,21 +1,21 @@
 package com.example.cruddemo.user;
 
 public class Users {
-     private String name;
+     private String Username;
      private String address;
      private String email;
      private Integer phone;
-     private String password;
+     private String Password;
 
     public Users() {
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return Username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        Username = username;
     }
 
     public String getAddress() {
@@ -34,19 +34,19 @@ public class Users {
         this.email = email;
     }
 
-    public int getPhone(int phone) {
+    public Integer getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(Integer phone) {
         this.phone = phone;
     }
 
     public String getPassword() {
-        return password;
+        return Password;
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        Password = password;
     }
 }
