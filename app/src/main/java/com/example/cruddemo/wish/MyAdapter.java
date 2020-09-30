@@ -99,5 +99,6 @@ public class MyAdapter extends RecyclerView.Adapter<DataHolder> {
 
     public interface OnWishListener{
         void OnWishClick(int position);
+        void OnWishClickDelete(int position);
     }
 }

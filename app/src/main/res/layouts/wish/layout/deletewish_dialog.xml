@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:padding="20dp">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@color/warning"
+        android:padding="20dp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/warningsign"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginBottom="10dp"
+            android:layout_centerHorizontal="true"
+            app:srcCompat="@drawable/warning_symbol" />
+
+        <TextView
+            android:id="@+id/deletewishNameDisp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/warningsign"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/dialog_btns"
+            android:padding="10dp"
+            android:text="TextView"
+            android:textColor="@color/dialog_txtcol"
+            android:textSize="20sp" />
+
+        <TextView
+
+            android:id="@+id/dialogtitle"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/deletewishNameDisp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="40dp"
+            android:text="@string/deleteWishConfirm"
+            android:textAlignment="center"
+            android:textAppearance="@style/TitleTextAppearance"
+            android:textColor="#ffff"
+            android:textSize="30dp" />
+
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/deleteWish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="40px"
+        android:layout_marginTop="410dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/dialog_btns"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:text="@string/delete"
+        android:textColor="#A52121"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/dismiss"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/dialog_btns"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:layout_marginLeft="520px"
+        android:layout_marginTop="410dp"
+        android:text="@string/cancel"
+        android:textColor="@color/dialog_txtcol"
+        android:textSize="20sp" />
+
+</FrameLayout>

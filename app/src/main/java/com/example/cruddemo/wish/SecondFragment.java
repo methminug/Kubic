@@ -1,5 +1,6 @@
 package com.example.cruddemo.wish;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -8,6 +9,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -123,5 +126,13 @@ public class SecondFragment extends Fragment implements MyAdapter.OnWishListener
         intent.putExtra("theWish",myWishes.get(position));
 
         startActivity(intent);
+    }
+
+    @Override
+    public void OnWishClickDelete(int position) {
+        Wish thisWish = myWishes.get(position);
+        DeleteWish dialog = new DeleteWish(thisWish.getWishName(), getContext());
+        dialog.showDeleteDialog();
+
     }
 }

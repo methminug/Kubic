@@ -105,4 +105,9 @@ public class FirstFragment extends Fragment implements MyAdapter.OnWishListener{
         dialog.show();
 
     }
+
+    @Override
+    public void OnWishClickDelete(int position) {
+        // NOT IMPLEMENTED FOR THIS FRAGMENT
+    }
 }
