@@ -20,7 +20,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cruddemo.R;
-import com.google.firebase.database.ChildEventListener;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -52,7 +52,7 @@ public class SecondFragment extends Fragment implements MyAdapter.OnWishListener
         //delete this
         sharedPreferences = view.getContext().getSharedPreferences("SWOPsharedPreferences", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("currentUser","uid12931");
+        editor.putString("currentUser","-MITimME3wm7nA8CTDSO");
         editor.apply();
         //
 

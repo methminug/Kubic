@@ -72,11 +72,12 @@ public class MyAdapter extends RecyclerView.Adapter<DataHolder> {
             usersdatabaseReference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    String uname = snapshot.child("Username").getValue().toString();
-                    if(uname != null){
+                    if(snapshot.exists()){
+                        String uname = snapshot.child("username").getValue().toString();
                         Log.w("This Username", uname);
                         holder.getpWishedBy().setText(uname );
                     }
+
 
                 }
 

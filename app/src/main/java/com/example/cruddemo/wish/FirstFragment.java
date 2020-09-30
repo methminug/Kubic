@@ -59,6 +59,7 @@ public class FirstFragment extends Fragment implements MyAdapter.OnWishListener{
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                allWishes.clear();
                 for (DataSnapshot dataSnapshot: snapshot.getChildren()){
                     final Wish wish = dataSnapshot.getValue(Wish.class);
                     allWishes.add(wish);
@@ -98,6 +99,8 @@ public class FirstFragment extends Fragment implements MyAdapter.OnWishListener{
         ImageView dialogImg = dialog.findViewById(R.id.userAvatar);
         TextView usernametxt = dialog.findViewById(R.id.userNameDisp);
         TextView userphone = dialog.findViewById(R.id.userPhoneDisp);
+
+        Log.i("wishowner",thisWish.getWishOwner());
 
         //try with Otto eventbus to wait for this line to complete
         dataBaseServices.getAUserDialog(getContext(),thisWish.getWishOwner(), usernametxt, userphone,dialogImg);

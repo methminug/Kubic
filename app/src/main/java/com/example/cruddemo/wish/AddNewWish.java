@@ -30,9 +30,6 @@ import java.util.List;
 
 public class AddNewWish extends AppCompatActivity {
 
-    //SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("SWOPsharedPreferences", MODE_PRIVATE);
-    //SharedPreferences.Editor preferencesEdit = sharedPreferences.edit().putString("currentUser","uid12931");
-
     SharedPreferences sharedPreferences;
 
     private EditText txtname, txtdesc;
@@ -59,7 +56,7 @@ public class AddNewWish extends AppCompatActivity {
 
         sharedPreferences = getApplicationContext().getSharedPreferences("SWOPsharedPreferences", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("currentUser","uid12931");
+        editor.putString("currentUser","-MITimME3wm7nA8CTDSO");
         editor.apply();
 
 

@@ -46,7 +46,7 @@ public class DataBaseServices {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                String uname = snapshot.child("Username").getValue().toString();
+                String uname = snapshot.child("username").getValue().toString();
                 String uphone = snapshot.child("phone").getValue().toString();
                 String uprofile = null;
                 try{

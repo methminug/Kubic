@@ -48,6 +48,9 @@ public class DeleteWish extends DialogFragment {
             @Override
             public void onClick(View view) {
                 alertDialog.dismiss();
+
+                //Deleting wish from DB
+
                 Toast.makeText(context,"Wish deleted successfully",Toast.LENGTH_LONG).show();
             }
         });

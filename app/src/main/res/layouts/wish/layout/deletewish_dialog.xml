@@ -76,7 +76,7 @@
         android:layout_marginBottom="15dp"
         android:paddingLeft="30dp"
         android:paddingRight="30dp"
-        android:layout_marginLeft="520px"
+        android:layout_marginLeft="500px"
         android:layout_marginTop="410dp"
         android:text="@string/cancel"
         android:textColor="@color/dialog_txtcol"
