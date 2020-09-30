@@ -77,8 +77,6 @@ public class MyAdapter extends RecyclerView.Adapter<DataHolder> {
                         Log.w("This Username", uname);
                         holder.getpWishedBy().setText(uname );
                     }
-
-
                 }
 
                 @Override
@@ -87,9 +85,6 @@ public class MyAdapter extends RecyclerView.Adapter<DataHolder> {
                 }
             });
         }
-
-
-        //holder.getpImageView().setImageResource(itemModels.get(position).getImg());
 
     }
 

@@ -57,8 +57,6 @@ public class DataBaseServices {
                     userPic.setImageResource(R.drawable.ic_person_outline_black_24);
                 }
 
-                //String uemail = snapshot.child("email").getValue().toString();
-
                 if(uname != null){
                     username.setText(uname);
                     userphone.setText(uphone);
