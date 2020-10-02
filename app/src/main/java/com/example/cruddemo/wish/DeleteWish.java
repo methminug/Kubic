@@ -20,22 +20,24 @@ import com.example.cruddemo.R;
 public class DeleteWish extends DialogFragment {
 
     private String wishName;
+    private String wishID;
+    private String ownerID;
+    private int position;
+    private SecondFragment fragmentRef;
     private Context context;
+    private DataBaseServices dataBaseServices = new DataBaseServices();
 
-    public DeleteWish(String deletewishName, Context pcontext) {
+    public DeleteWish(String deletewishName, String deleteID, String theOwner, Context pcontext, SecondFragment secondFragment, int position) {
         this.wishName=deletewishName;
-        context = pcontext;
-    }
-
-    public String getWishName() {
-        return wishName;
-    }
-
-    public void setWishName(String wishName) {
-        this.wishName = wishName;
+        this.wishID = deleteID;
+        this.position = position;
+        this.fragmentRef = secondFragment;
+        this.ownerID = theOwner;
+        this.context = pcontext;
     }
 
     public void showDeleteDialog() {
+        final int[] output = new int[1];
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         View view  = LayoutInflater.from(context).inflate(R.layout.deletewish_dialog, null);
 
@@ -49,9 +51,9 @@ public class DeleteWish extends DialogFragment {
             public void onClick(View view) {
                 alertDialog.dismiss();
 
-                //Deleting wish from DB
+                dataBaseServices.deleteWish(wishID, ownerID, context);
+                fragmentRef.wishDeleted(position);
 
-                Toast.makeText(context,"Wish deleted successfully",Toast.LENGTH_LONG).show();
             }
         });
 
@@ -63,7 +65,7 @@ public class DeleteWish extends DialogFragment {
         });
 
         if(alertDialog.getWindow()!=null){
-            // ???????
+            // TODO what does this do  ???????
             alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
 
         }

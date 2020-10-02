@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -18,9 +19,12 @@ import com.google.firebase.database.ValueEventListener;
 
 public class DataBaseServices {
 
+    private static final String TAG = "DELETING";
+
     private FirebaseDatabase thisdatabaseinstance = FirebaseDatabase.getInstance();
     private DatabaseReference wishesRef = thisdatabaseinstance.getReference("Wishes");
-    private DatabaseReference usersRef = thisdatabaseinstance.getReference("Users");
+    // TODO                                                            CHANGE TO <<  Users  >>
+    private DatabaseReference usersRef = thisdatabaseinstance.getReference("TestUsers");
     private DatabaseReference categoriesRef = thisdatabaseinstance.getReference("Categories");
 
     public FirebaseDatabase getDatabase() {
@@ -41,7 +45,7 @@ public class DataBaseServices {
 
     public void getAUserDialog(final Context context, final String uid, final TextView username, final TextView userphone, final ImageView userPic) {
 
-        DatabaseReference usersdatabaseReference = FirebaseDatabase.getInstance().getReference("Users").child(uid);
+        DatabaseReference usersdatabaseReference = this.usersRef.child(uid);
         usersdatabaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -69,5 +73,20 @@ public class DataBaseServices {
 
             }
         });
+    }
+
+    public void deleteWish(String wishID, String owner, Context appContext){
+
+        //Deleting from Firebase database
+        wishesRef.child(wishID).removeValue();
+        usersRef.child(owner).child("myWishes").child(wishID).removeValue();
+
+        Log.i(TAG,"Deleted wish "+wishID);
+        Toast.makeText(appContext,"Wish deleted successfully",Toast.LENGTH_LONG).show();
+
+        //TODO    REFRESH PAGE
+
+        //Deleting image from Firebase storage
+
     }
 }

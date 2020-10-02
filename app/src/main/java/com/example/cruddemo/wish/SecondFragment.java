@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -85,6 +86,7 @@ public class SecondFragment extends Fragment implements MyAdapter.OnWishListener
                     mywish.setWishKey(dataSnapshot.getKey());
                     myWishes.add(mywish);
                 }
+
                 myAdapter.notifyDataSetChanged();
             }
         }
@@ -132,8 +134,13 @@ public class SecondFragment extends Fragment implements MyAdapter.OnWishListener
     @Override
     public void OnWishClickDelete(int position) {
         Wish thisWish = myWishes.get(position);
-        DeleteWish dialog = new DeleteWish(thisWish.getWishName(), getContext());
+        DeleteWish dialog = new DeleteWish(thisWish.getWishName(), thisWish.getWishKey(), thisWish.getWishOwner(), getContext(),this, position);
         dialog.showDeleteDialog();
 
+    }
+
+    public void wishDeleted(int position){
+        myWishes.remove(myWishes.get(position));
+        myAdapter.notifyDataSetChanged();
     }
 }
