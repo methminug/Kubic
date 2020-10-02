@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -167,8 +166,9 @@ public class UploadImage extends Fragment {
                 .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
-                        double progressPercent = (100.0 * snapshot.getBytesTransferred()/snapshot.getTotalByteCount());
-                        progressUpload.setMessage((int)progressPercent + " % uploaded");
+                        //double progressPercent = (100.0 * snapshot.getBytesTransferred()/snapshot.getTotalByteCount());
+                        //progressUpload.setMessage((int)progressPercent + " % uploaded");
+                        progressUpload.setTitle("Your image is being uploaded...");
                     }
                 });
 

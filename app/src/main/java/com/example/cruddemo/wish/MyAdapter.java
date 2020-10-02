@@ -24,7 +24,7 @@ public class MyAdapter extends RecyclerView.Adapter<DataHolder> {
     Context appContext;
     ArrayList<Wish> itemModels;
     int wishType;
-    DatabaseReference usersdatabaseReference;
+    DataBaseServices usersdatabaseReference = new DataBaseServices();
     private OnWishListener monWishListener = null;
 
     public MyAdapter(Context appContext, ArrayList<Wish> itemModels, int typeOfWish, OnWishListener onWishListener) {
@@ -68,8 +68,9 @@ public class MyAdapter extends RecyclerView.Adapter<DataHolder> {
         Glide.with(appContext).load(itemModels.get(position).getImageURL()).into(holder.getpImageView());
         if(wishType == 0){
             String ownerID = itemModels.get(position).getWishOwner();
-            usersdatabaseReference = FirebaseDatabase.getInstance().getReference("Users").child(ownerID);
-            usersdatabaseReference.addValueEventListener(new ValueEventListener() {
+            DatabaseReference user = usersdatabaseReference.getUsersRef();
+            user = user.child(ownerID);
+            user.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     if(snapshot.exists()){

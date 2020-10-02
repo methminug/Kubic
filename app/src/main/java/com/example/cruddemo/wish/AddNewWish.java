@@ -35,10 +35,10 @@ public class AddNewWish extends AppCompatActivity {
     private EditText txtname, txtdesc;
     String uploadedImg;
     private Spinner txtcate;
-    private FirebaseDatabase database = FirebaseDatabase.getInstance();
-    private DatabaseReference myRef = database.getReference("Wishes");
-    private DatabaseReference thisUser = database.getReference("Users");
-    private DatabaseReference categories = database.getReference("Categories");
+    private DataBaseServices database = new DataBaseServices();
+    private DatabaseReference myRef = database.getWishesRef();
+    private DatabaseReference thisUser = database.getUsersRef();
+    private DatabaseReference categories = database.getCategoriesRef();
 
     private Wish newWish;
 

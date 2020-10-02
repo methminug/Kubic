@@ -34,6 +34,7 @@ import java.util.ArrayList;
 public class SecondFragment extends Fragment implements MyAdapter.OnWishListener {
 
     DatabaseReference databaseReference;
+    DataBaseServices dataBaseServices = new DataBaseServices();
 
     private RecyclerView mRecyclerView;
     FirebaseFunctions firebaseFunctions;
@@ -64,7 +65,7 @@ public class SecondFragment extends Fragment implements MyAdapter.OnWishListener
 
         // take a single wish object
         firebaseFunctions = FirebaseFunctions.getInstance();
-        databaseReference = FirebaseDatabase.getInstance().getReference("Wishes");
+        databaseReference = dataBaseServices.getWishesRef();
         Query query = databaseReference.orderByChild("wishOwner").equalTo(thisUser);
         query.addListenerForSingleValueEvent(valueEventListener);
 
