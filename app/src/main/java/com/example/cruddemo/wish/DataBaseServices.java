@@ -11,11 +11,15 @@ import androidx.annotation.NonNull;
 import com.bumptech.glide.Glide;
 import com.example.cruddemo.R;
 import com.example.cruddemo.user.User;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 public class DataBaseServices {
 
@@ -75,18 +79,34 @@ public class DataBaseServices {
         });
     }
 
-    public void deleteWish(String wishID, String owner, Context appContext){
+    public void deleteWish(Wish deletedWish, Context appContext){
+
+        final FirebaseStorage firebaseStorage = FirebaseStorage.getInstance().getReference().getStorage();
+
+        //Get image URL in firebaseStorage
+        final String imgURL = deletedWish.getImageURL();
+
+        StorageReference photoref =firebaseStorage.getReferenceFromUrl(imgURL);
+
+        photoref.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Log.i(TAG,"Successfully deleted image "+imgURL);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.i(TAG,"UNABLE to delete image "+imgURL);
+            }
+        });
 
         //Deleting from Firebase database
-        wishesRef.child(wishID).removeValue();
-        usersRef.child(owner).child("myWishes").child(wishID).removeValue();
+        wishesRef.child(deletedWish.getWishKey()).removeValue();
+        usersRef.child(deletedWish.getWishOwner()).child("myWishes").child(deletedWish.getWishKey()).removeValue();
 
-        Log.i(TAG,"Deleted wish "+wishID);
+
+        Log.i(TAG,"Deleted wish "+deletedWish.getWishKey());
         Toast.makeText(appContext,"Wish deleted successfully",Toast.LENGTH_LONG).show();
-
-        //TODO    REFRESH PAGE
-
-        //Deleting image from Firebase storage
 
     }
 }

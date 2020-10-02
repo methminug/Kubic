@@ -134,7 +134,7 @@ public class SecondFragment extends Fragment implements MyAdapter.OnWishListener
     @Override
     public void OnWishClickDelete(int position) {
         Wish thisWish = myWishes.get(position);
-        DeleteWish dialog = new DeleteWish(thisWish.getWishName(), thisWish.getWishKey(), thisWish.getWishOwner(), getContext(),this, position);
+        DeleteWish dialog = new DeleteWish(thisWish, getContext(),this, position);
         dialog.showDeleteDialog();
 
     }

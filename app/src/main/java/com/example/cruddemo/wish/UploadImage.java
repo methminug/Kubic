@@ -115,7 +115,7 @@ public class UploadImage extends Fragment {
 
         final ProgressDialog progressUpload = new ProgressDialog(getView().getContext());
 
-        progressUpload.setTitle("Uploading your image");
+        progressUpload.setTitle("Your image is being uploaded");
         progressUpload.show();
 
         final String randomKey = UUID.randomUUID().toString();
@@ -161,14 +161,6 @@ public class UploadImage extends Fragment {
                     public void onFailure(@NonNull Exception exception) {
                         progressUpload.dismiss();
                         Toast.makeText(getView().getContext(), "Sorry, something went wrong. Please try again", Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
-                        //double progressPercent = (100.0 * snapshot.getBytesTransferred()/snapshot.getTotalByteCount());
-                        //progressUpload.setMessage((int)progressPercent + " % uploaded");
-                        progressUpload.setTitle("Your image is being uploaded...");
                     }
                 });
 
