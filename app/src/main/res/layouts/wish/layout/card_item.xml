@@ -47,14 +47,27 @@
                     android:layout_toRightOf="@id/profilePic"/>
 
                 <TextView
+                    android:id="@+id/offeredby"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:textSize="15dp"
-                    android:text="Swopaholic232"
+                    android:text="UserName"
                     android:textColor="@color/colorPrimaryDark"
                     android:layout_toRightOf="@id/profilePic"
                     android:layout_below="@id/by"/>
+
+                <TextView
+                    android:id="@+id/itemCategory"
+                    android:background="@drawable/category_back"
+                    android:layout_marginRight="20dp"
+                    android:padding="10dp"
+                    android:textSize="15dp"
+                    android:textAppearance="@style/TitleTextAppearance"
+                    android:text="Category"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
 
             </RelativeLayout>
 

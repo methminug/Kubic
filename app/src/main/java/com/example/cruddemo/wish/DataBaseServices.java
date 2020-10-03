@@ -51,6 +51,34 @@ public class DataBaseServices {
         return categoriesRef;
     }
 
+    public void getAUser(final String uid, final TextView username){
+        DatabaseReference usersdatabaseReference = this.usersRef.child(uid);
+        usersdatabaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                String uname = snapshot.child("username").getValue().toString();
+//                try{
+//                    uprofile = snapshot.child("profilePic").getValue().toString();
+//                    Glide.with(context).load(uprofile).into(userPic);
+//                }catch (NullPointerException e){
+//                    Log.i("null","userprofile");
+//                    userPic.setImageResource(R.drawable.ic_person_outline_black_24);
+//                }
+
+                if(uname != null){
+                    username.setText(uname);
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
     public void getAUserDialog(final Context context, final String uid, final TextView username, final TextView userphone, final ImageView userPic) {
 
         DatabaseReference usersdatabaseReference = this.usersRef.child(uid);

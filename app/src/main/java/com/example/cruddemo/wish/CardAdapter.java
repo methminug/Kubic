@@ -9,12 +9,15 @@ import com.bumptech.glide.Glide;
 import com.example.cruddemo.R;
 import com.huxq17.swipecardsview.BaseCardAdapter;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 public class CardAdapter extends BaseCardAdapter {
 
     Context appContext;
     ArrayList<BarterItem> itemModels;
+    DataBaseServices dataBaseServices = new DataBaseServices();
 
     public CardAdapter(Context appContext, ArrayList<BarterItem> itemModels) {
         this.appContext = appContext;
@@ -38,13 +41,19 @@ public class CardAdapter extends BaseCardAdapter {
             return;
         }
         ImageView itemImgv = cardview.findViewById(R.id.itemImg);
+        TextView offeredBy = cardview.findViewById(R.id.offeredby);
+        TextView itemCategory = cardview.findViewById(R.id.itemCategory);
         TextView itemTitle = cardview.findViewById(R.id.ititle);
         TextView itemDesc = cardview.findViewById(R.id.idesc);
         TextView itemExchange = cardview.findViewById(R.id.iexchange);
+
         BarterItem barterItem = itemModels.get(position);
+
+        dataBaseServices.getAUser(barterItem.getOfferedBy(), offeredBy);
+        itemCategory.setText(barterItem.getCategory());
         itemTitle.setText(barterItem.getName());
         itemDesc.setText(barterItem.getDescription());
-        itemExchange.setText(barterItem.getCategory());
+        itemExchange.setText(barterItem.getExchangeFor());
 
         Glide.with(appContext).load(barterItem.getiImage()).into(itemImgv);
 
