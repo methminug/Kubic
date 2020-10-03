@@ -61,7 +61,7 @@ public class DeleteWish extends DialogFragment {
         });
 
         if(alertDialog.getWindow()!=null){
-            // TODO what does this do  ???????
+            // Removes black background of pop up dialog
             alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
 
         }

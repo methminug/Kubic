@@ -58,10 +58,10 @@ public class AddNewWish extends AppCompatActivity {
         fragTransaction.add(R.id.fragment, imageUploadfrag);
         fragTransaction.commit();
 
-        sharedPreferences = getApplicationContext().getSharedPreferences("SWOPsharedPreferences", MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("currentUser","-MITimME3wm7nA8CTDSO");
-        editor.apply();
+//        sharedPreferences = getApplicationContext().getSharedPreferences("SWOPsharedPreferences", MODE_PRIVATE);
+//        SharedPreferences.Editor editor = sharedPreferences.edit();
+//        editor.putString("currentUser","-MITimME3wm7nA8CTDSO");
+//        editor.apply();
 
 
 
@@ -104,7 +104,8 @@ public class AddNewWish extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                String currUser =sharedPreferences.getString("currentUser","");
+                sharedPreferences = getSharedPreferences("SWOPsharedPreferences", MODE_PRIVATE);
+                final String currUser =sharedPreferences.getString("currentUser","");
                 final Intent intent = new Intent(view.getContext(), WishList.class);
 
 
@@ -112,7 +113,6 @@ public class AddNewWish extends AppCompatActivity {
                 if (!mNameValidator.isValid()) {
                     txtname.setError("Please enter a name with less than 20 characters, and no special characters");
                     Log.i(TAG, "Not saving wish information: Invalid name format");
-                    return;
                 } else{
                     if (TextUtils.isEmpty(txtname.getText().toString())){
                         Toast.makeText(getApplicationContext(), "Enter a name", Toast.LENGTH_SHORT).show();

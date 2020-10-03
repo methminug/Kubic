@@ -51,13 +51,7 @@ public class SecondFragment extends Fragment implements MyAdapter.OnWishListener
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_second, container, false);
 
-        //delete this
         sharedPreferences = view.getContext().getSharedPreferences("SWOPsharedPreferences", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("currentUser","-MITimME3wm7nA8CTDSO");
-        editor.apply();
-        //
-
         final String thisUser =sharedPreferences.getString("currentUser","");
 
         mRecyclerView = view.findViewById(R.id.wishRecyclerView);

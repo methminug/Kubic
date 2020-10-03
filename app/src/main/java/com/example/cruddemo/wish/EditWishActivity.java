@@ -58,13 +58,10 @@ public class EditWishActivity extends AppCompatActivity {
         fragTransaction.add(R.id.fragment, imageUploadfrag);
         fragTransaction.commit();
 
-        sharedPreferences = getApplicationContext().getSharedPreferences("SWOPsharedPreferences", MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("currentUser","uid12931");
-        editor.apply();
-
-
-
+//        sharedPreferences = getApplicationContext().getSharedPreferences("SWOPsharedPreferences", MODE_PRIVATE);
+//        SharedPreferences.Editor editor = sharedPreferences.edit();
+//        editor.putString("currentUser","-MITimME3wm7nA8CTDSO");
+//        editor.apply();
 
         final String category = thisWish.getWishCategory();
 
@@ -83,7 +80,6 @@ public class EditWishActivity extends AppCompatActivity {
                 editCate.setAdapter(arrAdapter);
                 //Log.w(TAG2,category);
                 for (int i=0;i<categoryList.size();++i){
-                    //Log.w(TAG2,categoryList.get(i));
                     if(category.contentEquals(categoryList.get(i))){
                         Log.w(TAG2,"Found match");
                         editCate.setSelection(i);
@@ -106,11 +102,6 @@ public class EditWishActivity extends AppCompatActivity {
 
         editName.setText(thisWish.getWishName());
         editDesc.setText(thisWish.getWishDesc());
-        //Log.i("img URL",thisWish.getImageURL());
-        //Uri thisImgURI = Uri.parse(thisWish.getImageURL());
-        //Log.i("Parse URL",thisWish.getImageURL());
-
-        //Glide.with(imageUploadfrag.getContext()).load(thisWish.getImageURL()).into(editImg);
 
         Button btnUpdate = findViewById(R.id.button_post);
 
@@ -122,7 +113,9 @@ public class EditWishActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                String currUser =sharedPreferences.getString("currentUser","");
+                sharedPreferences = getSharedPreferences("SWOPsharedPreferences", MODE_PRIVATE);
+                final String currUser =sharedPreferences.getString("currentUser","");
+
                 final Intent intent = new Intent(view.getContext(), WishList.class);
 
                 if (TextUtils.isEmpty(editName.getText().toString())){

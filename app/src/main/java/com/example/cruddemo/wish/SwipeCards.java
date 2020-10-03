@@ -19,7 +19,7 @@ public class SwipeCards extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_swipe_cards);
 
-        swipeCardsView = (SwipeCardsView)findViewById(R.id.swipeCardsView);
+        swipeCardsView = findViewById(R.id.swipeCardsView);
         swipeCardsView.retainLastCard(false);
         swipeCardsView.enableSwipe(true);
         getItemData();

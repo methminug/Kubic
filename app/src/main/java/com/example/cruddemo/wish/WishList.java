@@ -1,6 +1,9 @@
 package com.example.cruddemo.wish;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -10,6 +13,7 @@ import androidx.appcompat.widget.Toolbar;
 import com.example.cruddemo.R;
 
 public class WishList extends AppCompatActivity {
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +21,12 @@ public class WishList extends AppCompatActivity {
         setContentView(R.layout.wish_list);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        //TODO delete this setter
+        sharedPreferences = getSharedPreferences("SWOPsharedPreferences", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("currentUser","-MITimME3wm7nA8CTDSO");
+        editor.apply();
 
     }
 
