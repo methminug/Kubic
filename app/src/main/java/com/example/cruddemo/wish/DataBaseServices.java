@@ -26,14 +26,18 @@ public class DataBaseServices {
     private static final String TAG = "DELETING";
 
     private FirebaseDatabase thisdatabaseinstance = FirebaseDatabase.getInstance();
+
     private DatabaseReference wishesRef = thisdatabaseinstance.getReference("Wishes");
     // TODO                                                            CHANGE TO <<  Users  >>
     private DatabaseReference usersRef = thisdatabaseinstance.getReference("TestUsers");
     private DatabaseReference categoriesRef = thisdatabaseinstance.getReference("Categories");
+    private DatabaseReference itemsRef = thisdatabaseinstance.getReference("Items");
 
     public FirebaseDatabase getDatabase() {
         return thisdatabaseinstance;
     }
+
+    public DatabaseReference getItemsRef() { return itemsRef; }
 
     public DatabaseReference getWishesRef() {
         return wishesRef;

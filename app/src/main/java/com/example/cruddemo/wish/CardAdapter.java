@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.cruddemo.R;
 import com.huxq17.swipecardsview.BaseCardAdapter;
 
@@ -36,16 +37,16 @@ public class CardAdapter extends BaseCardAdapter {
         if(itemModels == null || itemModels.size() == 0){
             return;
         }
-        ImageView itemImgv = (ImageView)cardview.findViewById(R.id.itemImg);
-        TextView itemTitle = (TextView)cardview.findViewById(R.id.ititle);
-        TextView itemDesc = (TextView)cardview.findViewById(R.id.idesc);
-        TextView itemExchange = (TextView)cardview.findViewById(R.id.iexchange);
+        ImageView itemImgv = cardview.findViewById(R.id.itemImg);
+        TextView itemTitle = cardview.findViewById(R.id.ititle);
+        TextView itemDesc = cardview.findViewById(R.id.idesc);
+        TextView itemExchange = cardview.findViewById(R.id.iexchange);
         BarterItem barterItem = itemModels.get(position);
         itemTitle.setText(barterItem.getName());
         itemDesc.setText(barterItem.getDescription());
         itemExchange.setText(barterItem.getCategory());
 
-        itemImgv.setImageResource(barterItem.getImg());
+        Glide.with(appContext).load(barterItem.getiImage()).into(itemImgv);
 
     }
 }

@@ -53,7 +53,7 @@ public class FirstFragment extends Fragment implements MyAdapter.OnWishListener{
         mRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
         allWishes = new ArrayList<Wish>();
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("Wishes");
+        databaseReference = dataBaseServices.getWishesRef();
         final MyAdapter.OnWishListener listener = this;
 
         databaseReference.addValueEventListener(new ValueEventListener() {

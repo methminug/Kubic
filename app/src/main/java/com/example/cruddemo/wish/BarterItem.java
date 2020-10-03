@@ -3,8 +3,7 @@ package com.example.cruddemo.wish;
 public class BarterItem {
 
     //TODO Add userName
-    private String  name, description, category, userName, iImage;
-    private int img;
+    private String  name, description, category, offeredBy, iImage;
 
     public String getName() {
         return name;
@@ -19,11 +18,11 @@ public class BarterItem {
     }
 
     public String getUserName() {
-        return userName;
+        return offeredBy;
     }
 
     public void setUserName(String userName) {
-        this.userName = userName;
+        this.offeredBy = userName;
     }
 
     public void setDescription(String description) {
@@ -46,11 +45,4 @@ public class BarterItem {
         this.iImage = iImage;
     }
 
-    public int getImg() {
-        return img;
-    }
-
-    public void setImg(int img) {
-        this.img = img;
-    }
 }

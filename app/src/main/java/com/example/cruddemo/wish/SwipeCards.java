@@ -1,10 +1,17 @@
 package com.example.cruddemo.wish;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cruddemo.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 import com.huxq17.swipecardsview.SwipeCardsView;
 
 import java.util.ArrayList;
@@ -13,6 +20,7 @@ public class SwipeCards extends AppCompatActivity {
 
     private SwipeCardsView swipeCardsView;
     private ArrayList<BarterItem> barterItems = new ArrayList<>();
+    private DataBaseServices dataBaseServices = new DataBaseServices();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,47 +31,34 @@ public class SwipeCards extends AppCompatActivity {
         swipeCardsView.retainLastCard(false);
         swipeCardsView.enableSwipe(true);
         getItemData();
+
+        // TODO show end screen after card deck finishes
     }
 
     private void getItemData() {
 
-        BarterItem wishItem = new BarterItem();
-        wishItem.setName("Cabinet");
-        wishItem.setDescription("Handmade out of wood");
-        wishItem.setCategory("Negotiable");
-        wishItem.setImg(R.drawable.cabinet);
-        barterItems.add(wishItem);
+        DatabaseReference allItems = dataBaseServices.getItemsRef();
 
-        wishItem = new BarterItem();
-        wishItem.setName("Pedestal fan");
-        wishItem.setDescription("5\' tall, in good condition");
-        wishItem.setCategory("Similar item or negotiable");
-        wishItem.setImg(R.drawable.fan);
-        barterItems.add(wishItem);
+        allItems.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                barterItems.clear();
 
-        wishItem = new BarterItem();
-        wishItem.setName("Stool");
-        wishItem.setDescription("Made of any teak wood");
-        wishItem.setCategory("Furniture");
-        wishItem.setImg(R.drawable.stool);
-        barterItems.add(wishItem);
+                for (DataSnapshot dataSnapshot: snapshot.getChildren()){
+                    final BarterItem barterItem = dataSnapshot.getValue(BarterItem.class);
+                    barterItems.add(barterItem);
+                }
 
-        wishItem = new BarterItem();
-        wishItem.setName("Tool Set");
-        wishItem.setDescription("Can't find this design anywhere!");
-        wishItem.setCategory("Miscellaneous");
-        wishItem.setImg(R.drawable.toolbox);
-        barterItems.add(wishItem);
+                CardAdapter cardAdapter = new CardAdapter(getApplicationContext(), barterItems);
+                swipeCardsView.setAdapter(cardAdapter);
+            }
 
-        wishItem = new BarterItem();
-        wishItem.setName("Small armchair");
-        wishItem.setDescription("A small one, maybe something similar to the picture?");
-        wishItem.setCategory("Furniture");
-        wishItem.setImg(R.drawable.chair);
-        barterItems.add(wishItem);
-
-        CardAdapter cardAdapter = new CardAdapter(this, barterItems);
-        swipeCardsView.setAdapter(cardAdapter);
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.i("Database Error",error.getMessage());
+                Toast.makeText(getApplicationContext(), "Sorry. Something went wrong displaying the items.", Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 }
