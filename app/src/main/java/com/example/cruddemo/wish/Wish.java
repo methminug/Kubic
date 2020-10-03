@@ -8,7 +8,7 @@ public class Wish implements Parcelable {
     private String wishDesc;
     private String wishCategory;
     private String wishOwner;
-    private String imageURL;
+    private String imageURL = "null";
     private String wishKey;
 
     public Wish() {

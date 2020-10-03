@@ -15,10 +15,6 @@ public class InputValidator implements TextWatcher {
 
     private boolean pIsValid = false;
 
-    public boolean IsValid(){
-        return pIsValid;
-    }
-
     @Override
     public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
@@ -37,5 +33,9 @@ public class InputValidator implements TextWatcher {
     @Override
     final public void afterTextChanged(Editable editableText) {
             pIsValid = isValidName(editableText);
+    }
+
+    public boolean isValid() {
+        return pIsValid;
     }
 }

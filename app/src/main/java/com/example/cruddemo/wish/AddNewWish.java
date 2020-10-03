@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -32,7 +33,10 @@ public class AddNewWish extends AppCompatActivity {
 
     SharedPreferences sharedPreferences;
 
+    public static final String TAG = "Add wish";
+
     private EditText txtname, txtdesc;
+    private InputValidator mNameValidator;
     String uploadedImg;
     private Spinner txtcate;
     private DataBaseServices database = new DataBaseServices();
@@ -87,6 +91,9 @@ public class AddNewWish extends AppCompatActivity {
         txtdesc = findViewById(R.id.editTextItemDesc);
         txtcate = findViewById(R.id.categorySpinner);
 
+        mNameValidator = new InputValidator();
+        txtname.addTextChangedListener(mNameValidator);
+
         Button btnsave = findViewById(R.id.button_post);
 
         newWish = new Wish();
@@ -100,28 +107,40 @@ public class AddNewWish extends AppCompatActivity {
                 String currUser =sharedPreferences.getString("currentUser","");
                 final Intent intent = new Intent(view.getContext(), WishList.class);
 
-                if (TextUtils.isEmpty(txtname.getText().toString())){
-                    Toast.makeText(getApplicationContext(), "Enter a name", Toast.LENGTH_SHORT).show();
-                }else if(TextUtils.isEmpty(txtdesc.getText().toString())){
-                    Toast.makeText(getApplicationContext(), "Enter a description", Toast.LENGTH_SHORT).show();
-                }else if(TextUtils.isEmpty(txtcate.getSelectedItem().toString())){
-                    Toast.makeText(getApplicationContext(), "Enter a category", Toast.LENGTH_SHORT).show();
-                }else{
-                    newWish.setWishName(txtname.getText().toString().trim());
-                    newWish.setWishDesc(txtdesc.getText().toString().trim());
-                    newWish.setWishCategory(txtcate.getSelectedItem().toString().trim());
-                    newWish.setWishOwner(currUser);
-                    newWish.setImageURL(uploadedImg);
 
-                    DatabaseReference anewWish = myRef.push();
-                    anewWish.setValue(newWish);
-                    String newWishID = anewWish.getKey();
+                // Don't save if the fields do not validate.
+                if (!mNameValidator.isValid()) {
+                    txtname.setError("Please enter a name with less than 20 characters, and no special characters");
+                    Log.i(TAG, "Not saving wish information: Invalid name format");
+                    return;
+                } else{
+                    if (TextUtils.isEmpty(txtname.getText().toString())){
+                        Toast.makeText(getApplicationContext(), "Enter a name", Toast.LENGTH_SHORT).show();
+                    }else if(TextUtils.isEmpty(txtdesc.getText().toString())){
+                        Toast.makeText(getApplicationContext(), "Enter a description", Toast.LENGTH_SHORT).show();
+                    }else if(TextUtils.isEmpty(txtcate.getSelectedItem().toString())){
+                        Toast.makeText(getApplicationContext(), "Enter a category", Toast.LENGTH_SHORT).show();
+                    }else{
+                        newWish.setWishName(txtname.getText().toString().trim());
+                        newWish.setWishDesc(txtdesc.getText().toString().trim());
+                        newWish.setWishCategory(txtcate.getSelectedItem().toString().trim());
+                        newWish.setWishOwner(currUser);
+                        if(uploadedImg!=null){
+                            newWish.setImageURL(uploadedImg);
+                        }
 
-                    thisUser.child(currUser).child("myWishes").child(newWishID).setValue(new Boolean(true));
 
-                    Toast.makeText(getApplicationContext(), "sent message ID: "+newWishID, Toast.LENGTH_SHORT).show();
-                    startActivity(intent);
+                        DatabaseReference anewWish = myRef.push();
+                        anewWish.setValue(newWish);
+                        String newWishID = anewWish.getKey();
+
+                        thisUser.child(currUser).child("myWishes").child(newWishID).setValue(new Boolean(true));
+
+                        Toast.makeText(getApplicationContext(), "sent message ID: "+newWishID, Toast.LENGTH_SHORT).show();
+                        startActivity(intent);
+                    }
                 }
+
             }
         });
 
@@ -130,4 +149,5 @@ public class AddNewWish extends AppCompatActivity {
     public void sendUploadUrl (String strURL){
         uploadedImg = strURL;
     }
+
 }

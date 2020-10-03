@@ -65,7 +65,13 @@ public class MyAdapter extends RecyclerView.Adapter<DataHolder> {
         holder.getpTitle().setText(itemModels.get(position).getWishName());
         holder.getpDesc().setText(itemModels.get(position).getWishDesc());
         holder.getpCateg().setText(itemModels.get(position).getWishCategory());
-        Glide.with(appContext).load(itemModels.get(position).getImageURL()).into(holder.getpImageView());
+        String imgURL = itemModels.get(position).getImageURL();
+        if(imgURL.equals("null")){
+            holder.getpImageView().setImageResource(R.drawable.image_placeholder);
+        }else{
+            Glide.with(appContext).load(imgURL).into(holder.getpImageView());
+        }
+
         if(wishType == 0){
             String ownerID = itemModels.get(position).getWishOwner();
             DatabaseReference user = usersdatabaseReference.getUsersRef();

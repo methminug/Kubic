@@ -86,19 +86,21 @@ public class DataBaseServices {
         //Get image URL in firebaseStorage
         final String imgURL = deletedWish.getImageURL();
 
-        StorageReference photoref =firebaseStorage.getReferenceFromUrl(imgURL);
+        if(!imgURL.equals("null")){
+            StorageReference photoref =firebaseStorage.getReferenceFromUrl(imgURL);
 
-        photoref.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void aVoid) {
-                Log.i(TAG,"Successfully deleted image "+imgURL);
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Log.i(TAG,"UNABLE to delete image "+imgURL);
-            }
-        });
+            photoref.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void aVoid) {
+                    Log.i(TAG,"Successfully deleted image "+imgURL);
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Log.i(TAG,"UNABLE to delete image "+imgURL);
+                }
+            });
+        }
 
         //Deleting from Firebase database
         wishesRef.child(deletedWish.getWishKey()).removeValue();
