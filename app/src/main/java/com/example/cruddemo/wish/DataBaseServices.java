@@ -104,7 +104,7 @@ public class DataBaseServices {
         wishesRef.child(deletedWish.getWishKey()).removeValue();
         usersRef.child(deletedWish.getWishOwner()).child("myWishes").child(deletedWish.getWishKey()).removeValue();
 
-
+        
         Log.i(TAG,"Deleted wish "+deletedWish.getWishKey());
         Toast.makeText(appContext,"Wish deleted successfully",Toast.LENGTH_LONG).show();
 
