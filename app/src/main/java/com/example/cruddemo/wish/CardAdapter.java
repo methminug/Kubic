@@ -1,12 +1,17 @@
 package com.example.cruddemo.wish;
 
 import android.content.Context;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.cruddemo.R;
 import com.huxq17.swipecardsview.BaseCardAdapter;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -14,11 +19,14 @@ public class CardAdapter extends BaseCardAdapter {
 
     Context appContext;
     ArrayList<BarterItem> itemModels;
+    DataBaseServices dataBaseServices = new DataBaseServices();
 
     public CardAdapter(Context appContext, ArrayList<BarterItem> itemModels) {
         this.appContext = appContext;
         this.itemModels = itemModels;
     }
+
+
 
     @Override
     public int getCount() {
@@ -36,16 +44,22 @@ public class CardAdapter extends BaseCardAdapter {
         if(itemModels == null || itemModels.size() == 0){
             return;
         }
-        ImageView itemImgv = (ImageView)cardview.findViewById(R.id.itemImg);
-        TextView itemTitle = (TextView)cardview.findViewById(R.id.ititle);
-        TextView itemDesc = (TextView)cardview.findViewById(R.id.idesc);
-        TextView itemExchange = (TextView)cardview.findViewById(R.id.iexchange);
+        ImageView itemImgv = cardview.findViewById(R.id.itemImg);
+        TextView offeredBy = cardview.findViewById(R.id.offeredby);
+        TextView itemCategory = cardview.findViewById(R.id.itemCategory);
+        TextView itemTitle = cardview.findViewById(R.id.ititle);
+        TextView itemDesc = cardview.findViewById(R.id.idesc);
+        TextView itemExchange = cardview.findViewById(R.id.iexchange);
+
         BarterItem barterItem = itemModels.get(position);
+
+        dataBaseServices.getAUser(barterItem.getOfferedBy(), offeredBy);
+        itemCategory.setText(barterItem.getCategory());
         itemTitle.setText(barterItem.getName());
         itemDesc.setText(barterItem.getDescription());
-        itemExchange.setText(barterItem.getCategory());
+        itemExchange.setText(barterItem.getExchangeFor());
 
-        itemImgv.setImageResource(barterItem.getImg());
+        Glide.with(appContext).load(barterItem.getiImage()).into(itemImgv);
 
     }
 }

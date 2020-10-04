@@ -2,9 +2,7 @@ package com.example.cruddemo.wish;
 
 public class BarterItem {
 
-    //TODO Add userName
-    private String  name, description, category, userName, iImage;
-    private int img;
+    private String  name, description, category, offeredBy, iImage, exchangeFor, itemKey;
 
     public String getName() {
         return name;
@@ -18,12 +16,28 @@ public class BarterItem {
         return description;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getOfferedBy() {
+        return offeredBy;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setOfferedBy(String offeredBy) {
+        this.offeredBy = offeredBy;
+    }
+
+    public String getItemKey() {
+        return itemKey;
+    }
+
+    public void setItemKey(String itemKey) {
+        this.itemKey = itemKey;
+    }
+
+    public String getExchangeFor() {
+        return exchangeFor;
+    }
+
+    public void setExchangeFor(String exchangeFor) {
+        this.exchangeFor = exchangeFor;
     }
 
     public void setDescription(String description) {
@@ -46,11 +60,4 @@ public class BarterItem {
         this.iImage = iImage;
     }
 
-    public int getImg() {
-        return img;
-    }
-
-    public void setImg(int img) {
-        this.img = img;
-    }
 }

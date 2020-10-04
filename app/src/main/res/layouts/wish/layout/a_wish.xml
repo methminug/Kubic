@@ -83,13 +83,13 @@
             android:layout_below="@id/wishItemDesc">
 
             <TextView
+                android:id="@+id/username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:id="@+id/username"
                 android:text="Set title in class"
                 android:textAppearance="@style/TitleTextAppearance"
-                android:textSize="35px"/>
+                android:textColor="@color/colorPrimary"
+                android:textSize="50px" />
 
             <!--                think of better tooltip-->
             <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -98,6 +98,7 @@
                 android:layout_alignParentRight="true"
                 android:backgroundTint="@color/buttons"
                 android:tooltipText="@string/toolOffer"
+                android:id="@+id/actionbtn"
                 android:src="@drawable/offer" />
 
         </RelativeLayout>

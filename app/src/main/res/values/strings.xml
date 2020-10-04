@@ -23,13 +23,16 @@
     <string name="toolHeart">Your wishes</string>
     <string name="toolPlus">Add a wish</string>
     <string name="toolOffer">Make an offer</string>
+    <string name="cancel">Cancel</string>
+    <string name="delete">Delete</string>
+    <string name="deleteWishConfirm">Are you sure you want to delete this wish?</string>
 
-    <string-array name="catgeorySpinner">
-        <item>Furniture</item>
-        <item>Books</item>
-        <item>Electronics</item>
-        <item>Accessories</item>
-        <item>Cookware</item>
-        <item>Miscellaneous</item>
-    </string-array>
+    <!--    <string-array name="catgeorySpinner">-->
+    <!--        <item>Furniture</item>-->
+    <!--        <item>Books</item>-->
+    <!--        <item>Electronics</item>-->
+    <!--        <item>Accessories</item>-->
+    <!--        <item>Cookware</item>-->
+    <!--        <item>Miscellaneous</item>-->
+    <!--    </string-array>-->
 </resources>
