@@ -15,6 +15,20 @@ public class InputValidator implements TextWatcher {
 
     private boolean pIsValid = false;
 
+    // STATIC because no need to create an instance of this class since it only validates
+    public static boolean isValidName(CharSequence userInput) {
+        return userInput != null && ITEMNAME_INPUT_PATTERN.matcher(userInput).matches();
+    }
+
+    @Override
+    final public void afterTextChanged(Editable editableText) {
+        pIsValid = isValidName(editableText);
+    }
+
+    public boolean isValid() {
+        return pIsValid;
+    }
+
     @Override
     public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
@@ -25,17 +39,5 @@ public class InputValidator implements TextWatcher {
 
     }
 
-    // STATIC because no need to create an instance of this class since it only validates
-    public static boolean isValidName(CharSequence userInput) {
-        return userInput != null && ITEMNAME_INPUT_PATTERN.matcher(userInput).matches();
-    }
 
-    @Override
-    final public void afterTextChanged(Editable editableText) {
-            pIsValid = isValidName(editableText);
-    }
-
-    public boolean isValid() {
-        return pIsValid;
-    }
 }
