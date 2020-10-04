@@ -1,9 +1,11 @@
 package com.example.cruddemo.wish;
 
 import android.content.Context;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.cruddemo.R;
@@ -23,6 +25,8 @@ public class CardAdapter extends BaseCardAdapter {
         this.appContext = appContext;
         this.itemModels = itemModels;
     }
+
+
 
     @Override
     public int getCount() {

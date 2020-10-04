@@ -22,10 +22,11 @@
         <TextView
             android:translationZ="-3dp"
             android:layout_marginTop="250dp"
-            android:layout_marginLeft="110dp"
+            android:layout_marginLeft="95dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="You've reached the end"/>
+            android:textAlignment="center"
+            android:text="You've reached the end \n Swipe up to see any matches"/>
 
 
 </FrameLayout>

@@ -3,7 +3,7 @@ package com.example.cruddemo.wish;
 public class BarterItem {
 
     //TODO Add userName
-    private String  name, description, category, offeredBy, iImage, exchangeFor;
+    private String  name, description, category, offeredBy, iImage, exchangeFor, itemKey;
 
     public String getName() {
         return name;
@@ -23,6 +23,14 @@ public class BarterItem {
 
     public void setOfferedBy(String offeredBy) {
         this.offeredBy = offeredBy;
+    }
+
+    public String getItemKey() {
+        return itemKey;
+    }
+
+    public void setItemKey(String itemKey) {
+        this.itemKey = itemKey;
     }
 
     public String getExchangeFor() {

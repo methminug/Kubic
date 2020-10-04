@@ -21,6 +21,9 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.util.Collections;
+import java.util.Map;
+
 public class DataBaseServices {
 
     private static final String TAG = "DELETING";
@@ -58,13 +61,6 @@ public class DataBaseServices {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                 String uname = snapshot.child("username").getValue().toString();
-//                try{
-//                    uprofile = snapshot.child("profilePic").getValue().toString();
-//                    Glide.with(context).load(uprofile).into(userPic);
-//                }catch (NullPointerException e){
-//                    Log.i("null","userprofile");
-//                    userPic.setImageResource(R.drawable.ic_person_outline_black_24);
-//                }
 
                 if(uname != null){
                     username.setText(uname);
@@ -109,6 +105,11 @@ public class DataBaseServices {
 
             }
         });
+    }
+
+    public void AddToLiked(String itemID, String uid){
+
+        usersRef.child(uid).child("swipedOn").child(itemID).setValue(Boolean.TRUE);
     }
 
     public void deleteWish(Wish deletedWish, Context appContext){
