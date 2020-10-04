@@ -6,17 +6,20 @@
     android:layout_height="match_parent">
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="50dp"
-        android:id="@+id/logo">
+        android:id="@+id/logo"
+        android:layout_width="411dp"
+        android:layout_height="87dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
 
         <ImageView
             android:id="@+id/logoicon"
-            android:layout_width="250dp"
-            android:layout_height="150dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:src="@drawable/barter"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -24,102 +27,144 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="-50dp"
+            android:layout_marginBottom="20dp"
             android:layout_toRightOf="@id/logoicon"
-            android:layout_centerVertical="true"
-            android:textSize="40dp"
-            android:textStyle="bold"
-            android:text="SWOP"/>
-
+            android:text="SWOP"
+            android:textSize="30dp"
+            android:textColor="@color/title_color"
+            android:textStyle="bold" />
 
 
     </RelativeLayout>
 
-    <LinearLayout
-        android:layout_width="508dp"
-        android:layout_height="864dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
+
+    <EditText
+        android:id="@+id/EtInputName"
+        android:layout_width="332dp"
+        android:layout_height="43dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="41dp"
+        android:background="@color/colorAccent"
+        android:hint="Enter User Name"
+        android:drawableLeft="@drawable/ic_person_outline_black_24"
+
+        android:inputType="textPersonName"
+        android:padding="5dp"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+    <EditText
+        android:id="@+id/EtInputAddress"
+        android:layout_width="336dp"
+        android:layout_height="66dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/colorAccent"
+        android:hint="Address"
+        android:inputType="textPostalAddress"
+        android:drawableLeft="@drawable/ic_baseline_home_24"
+        android:padding="5dp"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/EtInputName" />
+
+    <EditText
+        android:id="@+id/EtInputEmail"
+        android:layout_width="330dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="40dp"
+        android:background="@color/colorAccent"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:drawableLeft="@drawable/ic_baseline_email_24"
+        android:padding="5dp"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/EtInputAddress" />
+
+    <EditText
+        android:id="@+id/EtInputPhone"
+        android:layout_width="330dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="40dp"
+        android:background="@color/colorAccent"
+        android:hint="Phone"
+        android:drawableLeft="@drawable/ic_baseline_contact_phone_24"
+        android:inputType="text"
+        android:padding="5dp"
+        android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/EtInputPassword" />
 
-        <TextView
-            android:id="@+id/topic"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginVertical="220dp"
-            android:text="Sign Up Here!"
-            android:textSize="30sp" />
+    <EditText
+        android:id="@+id/EtInputPassword"
+        android:layout_width="330dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="40dp"
+        android:background="@color/colorAccent"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:drawableLeft="@drawable/ic_baseline_lock_24"
+        android:padding="5dp"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/EtInputEmail" />
 
-        <EditText
-            android:layout_width="330dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="-180dp"
-            android:background="@color/colorAccent"
-            android:hint="Enter User Name"
-            android:inputType="textPersonName"
-            android:padding="5dp"
-            android:textSize="22sp" />
+    <Button
 
+        android:id="@+id/btnSign"
+        android:layout_width="123dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:background="@color/colorInput2"
+        android:text="SIGN UP"
+        android:textSize="18sp"
+        android:textColor="@color/colorInput4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/EtInputPhone"
+        app:layout_constraintVertical_bias="0.294" />
 
-        <EditText
-            android:layout_width="330dp"
-            android:layout_height="150dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:background="@color/colorAccent"
-            android:hint="Address"
-            android:inputType="textPostalAddress"
-            android:padding="5dp"
-            android:textSize="22sp" />
-
-        <EditText
-            android:layout_width="330dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:background="@color/colorAccent"
-            android:hint="Email"
-            android:inputType="textEmailAddress"
-            android:padding="5dp"
-            android:textSize="22sp" />
-
-        <EditText
-            android:layout_width="330dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:background="@color/colorAccent"
-            android:hint="Phone"
-            android:inputType="text"
-            android:padding="5dp"
-            android:textSize="22sp" />
-
-        <EditText
-            android:layout_width="330dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:background="@color/colorAccent"
-            android:hint="Password"
-            android:inputType="textPassword"
-            android:padding="5dp"
-            android:textSize="22sp" />
-
-        <Button
-
-            android:layout_width="230dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp"
-            android:background="@color/colorPrimaryDark"
-            android:text="SIGN UP"
-            android:textSize="22sp" />
-
-
-    </LinearLayout>
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/txtSignUp"
+        android:textColor="@color/title_color"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
