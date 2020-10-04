@@ -1,6 +1,7 @@
 package com.example.cruddemo.wish;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,6 +30,7 @@ public class SwipeCards extends AppCompatActivity {
     SharedPreferences sharedPreferences;
 
     float x1,x2;
+    float y1, y2;
     int thisItem;
 
     @Override
@@ -90,12 +92,14 @@ public class SwipeCards extends AppCompatActivity {
             case MotionEvent.ACTION_DOWN:
             {
                 x1 = touchevent.getX();
+                y1 = touchevent.getY();
                 break;
             }
             // Get x coordinate when user finishes sweep
             case MotionEvent.ACTION_UP:
             {
                 x2 = touchevent.getX();
+                y2 = touchevent.getY();
 
                 //left to right sweep
                 if (x1 < x2)
@@ -108,6 +112,13 @@ public class SwipeCards extends AppCompatActivity {
                 if (x1 > x2)
                 {
                     Log.i("Item","dismissed");
+                }
+
+                if(y1 > y2){
+                    Toast.makeText(this, "Swiped UP", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(getApplicationContext(),FindMatch.class);
+                    startActivity(intent);
+
                 }
 
                 break;

@@ -2,7 +2,6 @@ package com.example.cruddemo.wish;
 
 public class BarterItem {
 
-    //TODO Add userName
     private String  name, description, category, offeredBy, iImage, exchangeFor, itemKey;
 
     public String getName() {

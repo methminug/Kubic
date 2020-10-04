@@ -119,10 +119,10 @@ public class UploadImage extends Fragment {
         progressUpload.show();
 
         final String randomKey = UUID.randomUUID().toString();
-        StorageReference riversRef = storageReference.child("images/" + randomKey);
+        StorageReference newImageRef = storageReference.child("images/" + randomKey);
 
 
-        riversRef.putFile(imageUri)
+        newImageRef.putFile(imageUri)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {

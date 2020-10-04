@@ -102,7 +102,6 @@ public class FirstFragment extends Fragment implements MyAdapter.OnWishListener{
 
         Log.i("wishowner",thisWish.getWishOwner());
 
-        //try with Otto eventbus to wait for this line to complete
         dataBaseServices.getAUserDialog(getContext(),thisWish.getWishOwner(), usernametxt, userphone,dialogImg);
 
         dialog.show();

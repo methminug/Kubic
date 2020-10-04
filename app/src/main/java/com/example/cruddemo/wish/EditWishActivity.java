@@ -58,11 +58,6 @@ public class EditWishActivity extends AppCompatActivity {
         fragTransaction.add(R.id.fragment, imageUploadfrag);
         fragTransaction.commit();
 
-//        sharedPreferences = getApplicationContext().getSharedPreferences("SWOPsharedPreferences", MODE_PRIVATE);
-//        SharedPreferences.Editor editor = sharedPreferences.edit();
-//        editor.putString("currentUser","-MITimME3wm7nA8CTDSO");
-//        editor.apply();
-
         final String category = thisWish.getWishCategory();
 
         Query query = categoryList.orderByKey();
@@ -143,11 +138,6 @@ public class EditWishActivity extends AppCompatActivity {
                     //get wish ID and update
 
                     newWishRef.child(thisWish.getWishKey()).setValue(newWish);
-//                    DatabaseReference anewWish = newWishRef.push();
-//                    anewWish.setValue(newWish);
-//                    String newWishID = anewWish.getKey();
-
-                    //thisUser.child(currUser).child("myWishes").child(newWishID).setValue(new Boolean(true));
 
                     Toast.makeText(getApplicationContext(), "Item updated"+thisWish.getWishKey(), Toast.LENGTH_SHORT).show();
                     startActivity(intent);

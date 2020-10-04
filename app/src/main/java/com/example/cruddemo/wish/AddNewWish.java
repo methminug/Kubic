@@ -58,13 +58,6 @@ public class AddNewWish extends AppCompatActivity {
         fragTransaction.add(R.id.fragment, imageUploadfrag);
         fragTransaction.commit();
 
-//        sharedPreferences = getApplicationContext().getSharedPreferences("SWOPsharedPreferences", MODE_PRIVATE);
-//        SharedPreferences.Editor editor = sharedPreferences.edit();
-//        editor.putString("currentUser","-MITimME3wm7nA8CTDSO");
-//        editor.apply();
-
-
-
         Query query = categories.orderByKey();
         query.addValueEventListener(new ValueEventListener() {
             @Override
@@ -107,7 +100,6 @@ public class AddNewWish extends AppCompatActivity {
                 sharedPreferences = getSharedPreferences("SWOPsharedPreferences", MODE_PRIVATE);
                 final String currUser =sharedPreferences.getString("currentUser","");
                 final Intent intent = new Intent(view.getContext(), WishList.class);
-
 
                 // Don't save if the fields do not validate.
                 if (!mNameValidator.isValid()) {
