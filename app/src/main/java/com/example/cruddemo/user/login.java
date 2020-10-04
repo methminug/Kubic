@@ -95,7 +95,9 @@ public class login extends AppCompatActivity {
                                 Log.i("User logged in ",dataSnapshot.getKey());
 
                                 //GOES TO PROFILE
+
                                 Intent intent = new Intent(getApplicationContext(),profile.class);
+                                intent.putExtra("theUser",login);
                                 startActivity(intent);
 
                             }

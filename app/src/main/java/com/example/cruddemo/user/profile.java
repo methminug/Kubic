@@ -1,5 +1,6 @@
 package com.example.cruddemo.user;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -13,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cruddemo.R;
+import com.example.cruddemo.wish.Wish;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -32,6 +34,9 @@ public class profile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
+        Intent intent = getIntent();
+        final Users thisUser = intent.getParcelableExtra("theUser");
+
         txtName = findViewById(R.id.PName);
         txtAdd = findViewById(R.id.PAddress);
         txtEmail = findViewById(R.id.PEmail);
@@ -45,6 +50,12 @@ public class profile extends AppCompatActivity {
 
         final SharedPreferences preferences = getSharedPreferences("SWOPsharedPreferences", MODE_PRIVATE);
         final String currUser =preferences.getString("currentUser","");
+
+        txtName.setText(thisUser.getUsername());
+        txtAdd.setText(thisUser.getAddress());
+        txtEmail.setText(thisUser.getEmail());
+        txtPhone.setText(thisUser.getPhone());
+        txtPassword.setText(thisUser.getPassword());
 
         butUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,7 +72,7 @@ public class profile extends AppCompatActivity {
                                 usd.setUsername(txtName.getText().toString().trim());
                                 usd.setAddress(txtAdd.getText().toString().trim());
                                 usd.setEmail(txtEmail.getText().toString().trim());
-                                usd.setPhone(Integer.parseInt(txtPhone.getText().toString().trim()));
+                                usd.setPhone(txtPhone.getText().toString().trim());
                                 usd.setPassword(txtPassword.getText().toString().trim());
 
 
