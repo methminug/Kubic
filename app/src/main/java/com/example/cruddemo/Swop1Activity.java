@@ -1,8 +1,10 @@
-package com.example.myapplication;
+package com.example.cruddemo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.myapplication.R;
 
 public class Swop1Activity extends AppCompatActivity {
 
