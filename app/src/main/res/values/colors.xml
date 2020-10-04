@@ -17,4 +17,8 @@
     <color name="colorTextBoxBack">#0A5D5B</color>
     <color name="colorHint">#c3acacac</color>
     <color name="colorInput">#FFFFFF</color>
+    <color name="colorInput2">#080808</color>
+    <color name="colorInput3">#3c3c40</color>
+    <color name="colorInput4">#fcfcfc</color>
+
 </resources>

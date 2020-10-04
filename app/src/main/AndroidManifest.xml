@@ -12,7 +12,6 @@
 
         <activity android:name=".user.signup">
 
-
         </activity>
         <activity android:name=".user.login">
             <intent-filter>
@@ -20,10 +19,13 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
 
         <activity android:name=".user.profile">
+        </activity>
 
+        <activity android:name=".user.details">
         </activity>
 
 
