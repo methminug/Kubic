@@ -112,7 +112,6 @@ public class FindMatch extends AppCompatActivity {
                                                 }
 
                                                 wants.clear();
-                                                // todo remove txtview.setText(ownerSwipedOnList.toString());
                                                 for (String itemInOwnerList:ownerSwipedOnList) {
                                                     if(userItems.contains(itemInOwnerList)){
                                                         wants.add(itemInOwnerList);
@@ -132,7 +131,7 @@ public class FindMatch extends AppCompatActivity {
                                                     temp.add(wants.get(0));
 
                                                     matches.add(temp);
-
+                                                    //TODO delete
                                                     txtview.setText(Arrays.deepToString(matches.toArray()));
                                                 }
                                             }
