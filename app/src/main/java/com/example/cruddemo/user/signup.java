@@ -62,7 +62,7 @@ public class signup extends AppCompatActivity {
                         usd.setUsername(txtName.getText().toString().trim());
                         usd.setAddress(txtAdd.getText().toString().trim());
                         usd.setEmail(txtEmail.getText().toString().trim());
-                        usd.setPhone(Integer.parseInt(txtPhone.getText().toString().trim()));
+                        usd.setPhone(txtPhone.getText().toString().trim());
                         usd.setPassword(txtPassword.getText().toString().trim());
 
                         dbRef.push().setValue(usd);

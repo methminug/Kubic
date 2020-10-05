@@ -27,12 +27,30 @@
     <string name="delete">Delete</string>
     <string name="deleteWishConfirm">Are you sure you want to delete this wish?</string>
 
-    <!--    <string-array name="catgeorySpinner">-->
-    <!--        <item>Furniture</item>-->
-    <!--        <item>Books</item>-->
-    <!--        <item>Electronics</item>-->
-    <!--        <item>Accessories</item>-->
-    <!--        <item>Cookware</item>-->
-    <!--        <item>Miscellaneous</item>-->
-    <!--    </string-array>-->
+
+    <string name="txtUname">User Name :</string>
+    <string name="txtAddress">User\'s Address :</string>
+    <string name="txtEmail">User\'s Email :</string>
+    <string name="txtPhone">Phone :</string>
+    <string name="txtPassword">Password :</string>
+    <string name="topic">User Details</string>
+    <string name="btnDel">Delete</string>
+    <string name="btnUp">Update</string>
+    <string name="txtSign">User Profile</string>
+    <string name="txtName">User Name :</string>
+    <string name="txtAdd">User\'s Address :</string>
+    <string name="txtUEmail">User\'s Email :</string>
+    <string name="txtUPhone">Phone :</string>
+    <string name="txtUPass">Password :</string>
+    <string name="butUp">UPDATE</string>
+    <string name="butDel">DELETE</string>
+    <string name="txtSignUp">"Sign Up Here "</string>
+    <string name="txt1">User Details</string>
+    <string name="txt2">User Name :</string>
+    <string name="txt3">Address :</string>
+    <string name="txt4">Email :</string>
+    <string name="txt5">Phone :</string>
+    <string name="btn1">SHOW</string>
+
+
 </resources>
