@@ -22,11 +22,6 @@ public class WishList extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //TODO delete this setter
-        sharedPreferences = getSharedPreferences("SWOPsharedPreferences", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("currentUser","-MITimME3wm7nA8CTDSO");
-        editor.apply();
 
     }
 
