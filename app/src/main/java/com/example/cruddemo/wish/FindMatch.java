@@ -127,6 +127,7 @@ public class FindMatch extends AppCompatActivity {
 
                                                     //List<ArrayList<String>> temp = new ArrayList<>();
                                                     List<String> temp = new ArrayList<>();
+                                                    Log.i("logged",allSwiped.get(0));
                                                     temp.add(allSwiped.get(0));
                                                     temp.add(wants.get(0));
 

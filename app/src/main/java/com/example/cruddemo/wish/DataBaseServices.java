@@ -31,7 +31,7 @@ public class DataBaseServices {
     private FirebaseDatabase thisdatabaseinstance = FirebaseDatabase.getInstance();
 
     private DatabaseReference wishesRef = thisdatabaseinstance.getReference("Wishes");
-    private DatabaseReference usersRef = thisdatabaseinstance.getReference("Users");
+    private DatabaseReference usersRef = thisdatabaseinstance.getReference("TestUsers");
     private DatabaseReference categoriesRef = thisdatabaseinstance.getReference("Categories");
     private DatabaseReference itemsRef = thisdatabaseinstance.getReference("Items");
 
