@@ -62,7 +62,7 @@
     <string name="txt5">Phone :</string>
     <string name="btn1">SHOW</string>
     <string name="title_activity_home">Home</string>
-
+    <string name="browse_items">Browse for items</string>
 
 
 </resources>

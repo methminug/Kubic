@@ -53,6 +53,10 @@ public class DataBaseServices {
         return categoriesRef;
     }
 
+    private DatabaseReference usersRef2 = thisdatabaseinstance.getReference("Users");
+
+    public DatabaseReference getUsersRef2() {return usersRef2;    }
+
     public void getAUser(final String uid, final TextView username){
         DatabaseReference usersdatabaseReference = this.usersRef.child(uid);
         usersdatabaseReference.addValueEventListener(new ValueEventListener() {

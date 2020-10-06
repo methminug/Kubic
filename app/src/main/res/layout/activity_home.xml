@@ -46,7 +46,6 @@
                 android:text="Title"/>
         </RelativeLayout>
 
-
         <include layout="@layout/content_main"/>
 
     </LinearLayout>
