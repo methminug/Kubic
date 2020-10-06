@@ -43,6 +43,7 @@ public class SecondFragment extends Fragment implements MyAdapter.OnWishListener
     ArrayList<Wish> myWishes;
     SharedPreferences sharedPreferences;
 
+
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
@@ -57,6 +58,8 @@ public class SecondFragment extends Fragment implements MyAdapter.OnWishListener
         mRecyclerView = view.findViewById(R.id.wishRecyclerView);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
         myWishes = new ArrayList<Wish>();
+        TextView title = getActivity().findViewById(R.id.pagetitle);
+        title.setText("My wishes");
 
         // take a single wish object
         firebaseFunctions = FirebaseFunctions.getInstance();

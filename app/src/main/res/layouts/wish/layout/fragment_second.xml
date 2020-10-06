@@ -7,23 +7,10 @@
     android:layout_height="match_parent"
     tools:context=".wish.SecondFragment">
 
-    <TextView
-        app:layout_constraintTop_toTopOf="parent"
-        android:id="@+id/fragsectitle"
-        android:textColor="#433F3F"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="MY WISHES"
-        android:layout_marginTop="10dp"
-        android:textAppearance="@style/TitleTextAppearance"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="35dp"
         android:orientation="vertical"
         tools:context=".wish.MainActivity">
 

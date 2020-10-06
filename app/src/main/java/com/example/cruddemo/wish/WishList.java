@@ -13,7 +13,6 @@ import androidx.appcompat.widget.Toolbar;
 import com.example.cruddemo.R;
 
 public class WishList extends AppCompatActivity {
-    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

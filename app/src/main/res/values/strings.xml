@@ -19,6 +19,16 @@
     <string name="titleDesc">Item Description</string>
     <string name="titleCategory">Category</string>
 
+<!--    Navigation Drawer-->
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_desc">Navigation header</string>
+
+    <string name="menu_wish">Go to wishes</string>
+    <string name="menu_makewish">Make a wish</string>
+    <string name="menu_items">Barter Items</string>
+    <string name="menu_profile">My Profile</string>
+
     <!--    Tooltips-->
     <string name="toolHeart">Your wishes</string>
     <string name="toolPlus">Add a wish</string>
@@ -51,6 +61,8 @@
     <string name="txt4">Email :</string>
     <string name="txt5">Phone :</string>
     <string name="btn1">SHOW</string>
+    <string name="title_activity_home">Home</string>
+
 
 
 </resources>
