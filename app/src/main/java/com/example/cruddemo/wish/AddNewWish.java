@@ -129,7 +129,8 @@ public class AddNewWish extends AppCompatActivity {
 
                         thisUser.child(currUser).child("myWishes").child(newWishID).setValue(Boolean.TRUE);
 
-                        Toast.makeText(getApplicationContext(), "sent message ID: "+newWishID, Toast.LENGTH_SHORT).show();
+                        Log.i("sent message ID: ",newWishID);
+                        Toast.makeText(getApplicationContext(), "New wish created!", Toast.LENGTH_SHORT).show();
                         startActivity(intent);
                     }
                 }

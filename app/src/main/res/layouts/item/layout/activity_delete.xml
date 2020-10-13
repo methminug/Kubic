@@ -35,7 +35,7 @@
         tools:text="Laptop" />
 
     <Button
-        android:id="@+id/delete"
+        android:id="@+id/deleteBarterItem"
         android:layout_width="135dp"
         android:layout_height="46dp"
         android:text="Delete Item"

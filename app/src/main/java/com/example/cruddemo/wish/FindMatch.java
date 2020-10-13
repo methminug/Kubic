@@ -2,6 +2,9 @@ package com.example.cruddemo.wish;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.cruddemo.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -20,7 +23,7 @@ public class FindMatch extends AppCompatActivity {
 
     ArrayList<String> checkedUsers;
     //Map<BarterItem,BarterItem> matches;
-    List<List<String>> matches = new ArrayList<List<String>>();
+    List<List<List<String>>> matches = new ArrayList<List<List<String>>>();
     ArrayList<String> userSwipedOnList, ownerSwipedOnList;
     ArrayList<String> userItems, owneritems;
     ArrayList<String> allSwiped, wants;
@@ -126,14 +129,29 @@ public class FindMatch extends AppCompatActivity {
                                                     }
 
                                                     //List<ArrayList<String>> temp = new ArrayList<>();
-                                                    List<String> temp = new ArrayList<>();
+                                                    List<List<String>> temp = new ArrayList<List<String>>();
                                                     Log.i("logged",allSwiped.get(0));
-                                                    temp.add(allSwiped.get(0));
-                                                    temp.add(wants.get(0));
+                                                    temp.add(allSwiped);
+                                                    temp.add(wants);
 
                                                     matches.add(temp);
-                                                    //TODO delete
-                                                    txtview.setText(Arrays.deepToString(matches.toArray()));
+
+
+                                                    if(matches.isEmpty()){
+                                                        txtview.setText("No Matches.\nTry swiping again!");
+                                                    }else{
+                                                        Log.i("Temp: ",Arrays.deepToString(temp.toArray()));
+                                                        RecyclerView mRecyclerView = findViewById(R.id.itemPairs);
+                                                        mRecyclerView.setLayoutManager(new LinearLayoutManager(FindMatch.this));
+
+                                                        ItemPairsAdapter itemPairsAdapter = new ItemPairsAdapter(matches);
+                                                        //Adding values to cards
+
+                                                        mRecyclerView.setAdapter(itemPairsAdapter);
+
+                                                        Log.i("Matched Items",Arrays.deepToString(matches.toArray()));
+                                                    }
+
                                                 }
                                             }
 

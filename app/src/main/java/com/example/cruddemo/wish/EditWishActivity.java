@@ -140,7 +140,7 @@ public class EditWishActivity extends AppCompatActivity {
 
                     newWishRef.child(thisWish.getWishKey()).setValue(newWish);
 
-                    Toast.makeText(getApplicationContext(), "Item updated"+thisWish.getWishKey(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Wish updated", Toast.LENGTH_SHORT).show();
                     startActivity(intent);
                 }
             }

@@ -12,16 +12,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Home">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".wish.FindMatch"
             android:label="Swop Matches">
 
+        </activity>
+        <activity android:name=".user.login" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".wish.ConnectUserActivity" />
         <activity
@@ -39,12 +42,14 @@
             android:name=".item.MainActivity"
             android:label="My Account" />
         <activity
+            android:name=".item.DeleteItem"
+            android:label="Delete Item" />
+        <activity
             android:name=".item.Swop1Activity"
             android:label="Item Profile" />
         <activity
             android:name=".item.Swop2Activity"
             android:label="Cart" />
-        <activity android:name=".user.login" />
     </application>
 
 </manifest>

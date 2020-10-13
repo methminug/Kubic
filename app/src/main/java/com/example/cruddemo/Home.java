@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.cruddemo.item.DeleteItem;
 import com.example.cruddemo.user.ProfileFragment;
 import com.example.cruddemo.user.Users;
 import com.example.cruddemo.user.profile;
@@ -44,10 +45,10 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         Log.i("test","In home class");
 
         // TODO delete after testing
-        SharedPreferences sharedPreferences = getSharedPreferences("SWOPsharedPreferences", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("currentUser","-MITimME3wm7nA8CTDSO");
-        editor.apply();
+//        SharedPreferences sharedPreferences = getSharedPreferences("SWOPsharedPreferences", Context.MODE_PRIVATE);
+//        SharedPreferences.Editor editor = sharedPreferences.edit();
+//        editor.putString("currentUser","-MITimME3wm7nA8CTDSO");
+//        editor.apply();
 
         //Drawer Menu
         drawerLayout = findViewById(R.id.drawer_layout);
@@ -96,6 +97,12 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
             case R.id.nav_profile:
                 drawerLayout.closeDrawer(GravityCompat.START);
                 getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new ProfileFragment()).commit();
+                break;
+
+            case R.id.nav_items:
+                drawerLayout.closeDrawer(GravityCompat.START);
+                Intent intentItems = new Intent(getApplicationContext(), DeleteItem.class);
+                startActivity(intentItems);
                 break;
 
             case R.id.nav_browse:

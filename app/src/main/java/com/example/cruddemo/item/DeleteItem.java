@@ -20,6 +20,9 @@ public class DeleteItem extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_delete);
+
+        delete = findViewById(R.id.deleteBarterItem);
 
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
