@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.example.cruddemo.item.DeleteItem;
 import com.example.cruddemo.user.ProfileFragment;
 import com.example.cruddemo.user.Users;
+import com.example.cruddemo.user.login;
 import com.example.cruddemo.user.profile;
 import com.example.cruddemo.wish.AddNewWish;
 import com.example.cruddemo.wish.DataBaseServices;
@@ -97,6 +98,18 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
             case R.id.nav_profile:
                 drawerLayout.closeDrawer(GravityCompat.START);
                 getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new ProfileFragment()).commit();
+                break;
+
+            case R.id.nav_logout:
+                drawerLayout.closeDrawer(GravityCompat.START);
+                SharedPreferences sharedPreferences;
+                sharedPreferences = getSharedPreferences("SWOPsharedPreferences", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.remove("currentUser");
+                editor.apply();
+                Intent intentlogout = new Intent(getApplicationContext(), login.class);
+                startActivity(intentlogout);
+                finish();
                 break;
 
             case R.id.nav_items:
