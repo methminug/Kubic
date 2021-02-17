@@ -18,6 +18,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.cruddemo.Home;
 import com.example.cruddemo.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -99,7 +100,7 @@ public class AddNewWish extends AppCompatActivity {
 
                 sharedPreferences = getSharedPreferences("SWOPsharedPreferences", MODE_PRIVATE);
                 final String currUser =sharedPreferences.getString("currentUser","");
-                final Intent intent = new Intent(view.getContext(), WishList.class);
+                final Intent intent = new Intent(view.getContext(), Home.class);
 
                 // Don't save if the fields do not validate.
                 if (!mNameValidator.isValid()) {
@@ -128,7 +129,8 @@ public class AddNewWish extends AppCompatActivity {
 
                         thisUser.child(currUser).child("myWishes").child(newWishID).setValue(Boolean.TRUE);
 
-                        Toast.makeText(getApplicationContext(), "sent message ID: "+newWishID, Toast.LENGTH_SHORT).show();
+                        Log.i("sent message ID: ",newWishID);
+                        Toast.makeText(getApplicationContext(), "New wish created!", Toast.LENGTH_SHORT).show();
                         startActivity(intent);
                     }
                 }

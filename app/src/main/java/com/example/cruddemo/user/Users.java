@@ -7,7 +7,7 @@ public class Users implements Parcelable {
      private String Username;
      private String address;
      private String email;
-     private Integer phone;
+     private String phone;
      private String Password;
 
     public Users() {
@@ -20,7 +20,7 @@ public class Users implements Parcelable {
         if (in.readByte() == 0) {
             phone = null;
         } else {
-            phone = in.readInt();
+            phone = in.readString();
         }
         Password = in.readString();
     }
@@ -34,7 +34,7 @@ public class Users implements Parcelable {
             dest.writeByte((byte) 0);
         } else {
             dest.writeByte((byte) 1);
-            dest.writeInt(phone);
+            dest.writeString(phone);
         }
         dest.writeString(Password);
     }
@@ -80,11 +80,11 @@ public class Users implements Parcelable {
         this.email = email;
     }
 
-    public Integer getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(Integer phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 

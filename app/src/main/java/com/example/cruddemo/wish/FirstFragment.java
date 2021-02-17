@@ -52,6 +52,8 @@ public class FirstFragment extends Fragment implements MyAdapter.OnWishListener{
         mRecyclerView = view.findViewById(R.id.allWishRecyclerView);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
         allWishes = new ArrayList<Wish>();
+        TextView title = getActivity().findViewById(R.id.pagetitle);
+        title.setText("The Wish List");
 
         databaseReference = dataBaseServices.getWishesRef();
         final MyAdapter.OnWishListener listener = this;

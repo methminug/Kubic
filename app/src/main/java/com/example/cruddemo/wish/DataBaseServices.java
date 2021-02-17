@@ -31,7 +31,7 @@ public class DataBaseServices {
     private FirebaseDatabase thisdatabaseinstance = FirebaseDatabase.getInstance();
 
     private DatabaseReference wishesRef = thisdatabaseinstance.getReference("Wishes");
-    private DatabaseReference usersRef = thisdatabaseinstance.getReference("Users");
+    private DatabaseReference usersRef = thisdatabaseinstance.getReference("TestUsers");
     private DatabaseReference categoriesRef = thisdatabaseinstance.getReference("Categories");
     private DatabaseReference itemsRef = thisdatabaseinstance.getReference("Items");
 
@@ -52,6 +52,10 @@ public class DataBaseServices {
     public DatabaseReference getCategoriesRef() {
         return categoriesRef;
     }
+
+    private DatabaseReference usersRef2 = thisdatabaseinstance.getReference("Users");
+
+    public DatabaseReference getUsersRef2() {return usersRef2;    }
 
     public void getAUser(final String uid, final TextView username){
         DatabaseReference usersdatabaseReference = this.usersRef.child(uid);

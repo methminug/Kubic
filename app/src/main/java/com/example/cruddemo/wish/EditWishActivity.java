@@ -19,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.cruddemo.Home;
 import com.example.cruddemo.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -111,7 +112,7 @@ public class EditWishActivity extends AppCompatActivity {
                 sharedPreferences = getSharedPreferences("SWOPsharedPreferences", MODE_PRIVATE);
                 final String currUser =sharedPreferences.getString("currentUser","");
 
-                final Intent intent = new Intent(view.getContext(), WishList.class);
+                final Intent intent = new Intent(view.getContext(), Home.class);
 
                 if (TextUtils.isEmpty(editName.getText().toString())){
                     Toast.makeText(getApplicationContext(), "Enter a name", Toast.LENGTH_SHORT).show();
@@ -139,7 +140,7 @@ public class EditWishActivity extends AppCompatActivity {
 
                     newWishRef.child(thisWish.getWishKey()).setValue(newWish);
 
-                    Toast.makeText(getApplicationContext(), "Item updated"+thisWish.getWishKey(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Wish updated", Toast.LENGTH_SHORT).show();
                     startActivity(intent);
                 }
             }

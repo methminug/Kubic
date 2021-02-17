@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="190dp"
+    android:background="#FFFFFF">
+    
+    <TextView
+        android:id="@+id/subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start swopping!"
+        android:textStyle="italic"
+        android:textSize="15dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="15dp"/>
+
+    <TextView
+        android:layout_toRightOf="@id/SWOPlogo"
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SWOP"
+        android:textSize="60dp"
+        android:textColor="#000"
+        android:fontFamily="@font/anton_regular"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="30dp"/>
+
+    <ImageView
+        android:id="@+id/SWOPlogo"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="15dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/logo"/>
+</RelativeLayout>

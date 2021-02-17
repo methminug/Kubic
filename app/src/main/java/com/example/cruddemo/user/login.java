@@ -15,6 +15,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.cruddemo.Home;
 import com.example.cruddemo.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -96,9 +97,11 @@ public class login extends AppCompatActivity {
 
                                 //GOES TO PROFILE
 
-                                Intent intent = new Intent(getApplicationContext(),profile.class);
+                                Intent intent = new Intent(getApplicationContext(), Home.class);
                                 intent.putExtra("theUser",login);
                                 startActivity(intent);
+
+                                finish();
 
                             }
                             else{

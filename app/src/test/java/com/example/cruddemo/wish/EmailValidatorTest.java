@@ -22,15 +22,15 @@ public class EmailValidatorTest {
 
     @Test
     public void email_isWrong_missingname() {
-        assertFalse(InputValidator.isValidName("@gmail.com"));
+        assertFalse(EmailValidator.isValidEmail("@gmail.com"));
     }
 
     @Test
     public void email_isWrong_repeatedChar() {
-        assertFalse(InputValidator.isValidName("ABC123@gmail..com"));
+        assertFalse(EmailValidator.isValidEmail("ABC123@gmail..com"));
     }
     @Test
     public void email_isWrong_null() {
-        assertFalse(InputValidator.isValidName(null));
+        assertFalse(EmailValidator.isValidEmail(null));
     }
 }

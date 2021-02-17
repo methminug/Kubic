@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="5dp"
+    app:cardUseCompatPadding="true"
+    android:layout_marginLeft="5px"
+    android:layout_marginRight="5px">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:weightSum="6"
+        android:padding="20dp"
+        android:orientation="horizontal">
+
+
+        <RelativeLayout
+            android:id="@+id/sect1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <ImageView
+                android:layout_centerHorizontal="true"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:id="@+id/anItemImage"
+                android:src="@mipmap/ic_launcher"/>
+
+
+            <TextView
+                android:id="@+id/anItemName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/anItemImage"
+                android:layout_marginTop="14dp"
+                android:text="Set title in class"
+                android:textAppearance="@style/TitleTextAppearance"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/anItemDesc"
+                android:text="Set description in class"
+                android:textAppearance="@style/TitleTextAppearance"
+                android:textSize="40px"
+                android:layout_below="@id/anItemName"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/anItemCategory"
+                android:text="Wish Category"
+                android:textSize="35px"
+                android:textColor="@color/title_color"
+                android:padding="7dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/category_back"
+                android:layout_below="@id/anItemDesc"/>
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
